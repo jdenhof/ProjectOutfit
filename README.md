@@ -15,17 +15,19 @@ The Outfit of the Day Application will be an IOS and Android app made on Flutter
 ![Project Outfit Sequence Diagram](https://user-images.githubusercontent.com/113374113/193301027-371d83ad-363c-4823-8154-d72ae0e8b7be.png)
 
 # 4 UI
-<p align="center">Home</p>
 
-![Home](https://github.com/jdenhof/ProjectOutfit/blob/main/images/HomeScreen.png)
-<p align="center">Outfit Selector</p>
+<p align="center">
+    <p align="center">Home</p>
+    <img width="200" src="(https://github.com/jdenhof/ProjectOutfit/blob/main/images/HomeScreen.png)" alt="Home">
+    <p align="center">Outfit Selector</p>
+    <img width="200" src="(https://github.com/jdenhof/ProjectOutfit/blob/main/images/Selection.png)" alt="Outfit Selector">
+    <p align="center">Outfit Calendar</p>
+    <img width="200" src="(https://github.com/jdenhof/ProjectOutfit/blob/main/images/Calendar.png)" alt="Outfit Calendar">
+    <p align="center">Settings</p>
+    <img width="200" src="(https://github.com/jdenhof/ProjectOutfit/blob/main/images/Settings.png)" alt="Settings">
+</p>
 
-![Selection](https://github.com/jdenhof/ProjectOutfit/blob/main/images/Selection.png)
-<p align="center">Outfit Calendar</p>
 
-![Calendar](https://github.com/jdenhof/ProjectOutfit/blob/main/images/Calendar.png)
-<p align="center">Settings</p>
 
-![Settings](https://github.com/jdenhof/ProjectOutfit/blob/main/images/Settings.png)
 
 
