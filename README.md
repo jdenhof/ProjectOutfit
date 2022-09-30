@@ -9,8 +9,6 @@ Outfit of the Day -"OOTD" strives to reconcile this adveristy by providing a pla
 The Outfit of the Day Application will be an IOS and Android app made on Flutter using Google Cloud Functions to route traffic to Firebase to store the user's saved outfits and clothing.
 
 ![Project Outfit Architecture Diagram](https://user-images.githubusercontent.com/113374113/193295951-4de34ec4-aa7b-4718-acef-6d26425b8907.png)
-                                               
-                                                    Figure 1
 ### 3.1 Class Diagram
 
 ### 3.2 Sequence Diagram
