@@ -6,4 +6,5 @@ With so many things going on in life, remembering what you wore to every event e
 #2 Intro
 
 #3 Architecture
+![Project Outfit Architecture Diagram](https://user-images.githubusercontent.com/113374113/193295951-4de34ec4-aa7b-4718-acef-6d26425b8907.png)
 
