@@ -1,4 +1,4 @@
-### ProjectOutfit
+# ProjectOutfit
 
 ## 1 Abstract
 With so many things going on in life, remembering what you wore to every event everyday is combursome and for some unachievable. From fashanista to your average hoodie wearer, nobody wants to be seen in the same outfit repeatidly. Outfit of the Day -"OOTD" strives to reconcile this adveristy by providing a platform in which users can easily store and track outfits worn. Simply open the app, take a picture, and select which clothes combine to make the outfit. Tag the outfit with an event or simply upload to store your outfit. Outfits can be previed within the Wardrobe Calendar by simply selecting the date or searching a tag. OOTD provides a simple and intuitive platform to take one more stress off your plate.
@@ -10,12 +10,12 @@ The Outfit of the Day Application will be an IOS and Adnroid app made on flutter
 ![Project Outfit Architecture Diagram](https://user-images.githubusercontent.com/113374113/193295951-4de34ec4-aa7b-4718-acef-6d26425b8907.png)
                                                
                                                     Figure 1
-# 3.1 Class Diagram
+### 3.1 Class Diagram
 
-# 3.2 Sequence Diagram
+### 3.2 Sequence Diagram
 ![Project Outfit Sequence Diagram](https://user-images.githubusercontent.com/113374113/193301027-371d83ad-363c-4823-8154-d72ae0e8b7be.png)
 
-## 4 UI 
+# 4 UI 
 ![Project Outfit UI](https://user-images.githubusercontent.com/113374113/193300579-ac45e3ee-2177-4e1c-824e-1b68a965f38a.png)
 
 
