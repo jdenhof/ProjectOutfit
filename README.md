@@ -14,14 +14,18 @@ The Outfit of the Day Application will be an IOS and Android app made on Flutter
 ### 3.2 Sequence Diagram
 ![Project Outfit Sequence Diagram](https://user-images.githubusercontent.com/113374113/193301027-371d83ad-363c-4823-8154-d72ae0e8b7be.png)
 
-# 4 UI 
-<center>Home</center>
+# 4 UI
+<p align="center">Home</p>
+
 ![Home](https://github.com/jdenhof/ProjectOutfit/blob/main/images/HomeScreen.png)
-<center>Outfit Selector</center>
+<p align="center">Outfit Selector</p>
+
 ![Selection](https://github.com/jdenhof/ProjectOutfit/blob/main/images/Selection.png)
-<center>Outfit Calendar</center>
+<p align="center">Outfit Calendar</p>
+
 ![Calendar](https://github.com/jdenhof/ProjectOutfit/blob/main/images/Calendar.png)
-<center>Settings</center>
+<p align="center">Settings</p>
+
 ![Settings](https://github.com/jdenhof/ProjectOutfit/blob/main/images/Settings.png)
 
 
