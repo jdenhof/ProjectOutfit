@@ -10,9 +10,9 @@ The Outfit of the Day Application will be an IOS and Android app made on Flutter
 
 ![Project Outfit Architecture Diagram](https://user-images.githubusercontent.com/113374113/193295951-4de34ec4-aa7b-4718-acef-6d26425b8907.png)
 ### 3.1 Usecase Diagram
-![UsecaseDiagram](https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Usecase%20Diagram.png)
+![UsecaseDiagram](https://github.com/jdenhof/ProjectOutfit/blob/main/resources/UsecaseDiagram.png)
 ### 3.2 Class Diagram
-![ClassDiagram](https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Class%20Diagram.png)
+![ClassDiagram](https://github.com/jdenhof/ProjectOutfit/blob/main/resources/ClassDiagram.png)
 ### 3.3 Sequence Diagram
 ![Project Outfit Sequence Diagram](https://user-images.githubusercontent.com/113374113/193301027-371d83ad-363c-4823-8154-d72ae0e8b7be.png)
 
