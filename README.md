@@ -21,15 +21,15 @@ The Outfit of the Day Application will be an IOS and Android app made on Flutter
 # 4 UI 
 <table border="0">
  <tr>
-    <td><b style="font-size:30px">Home</b></td>
-    <td><b style="font-size:30px">Outfit Selector</b></td>
+    <td><b align="center" style="font-size:30px">Home</b></td>
+    <td><b align="center" style="font-size:30px">Outfit Selector</b></td>
  </tr>
  <tr>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.png"  width="300" height="500">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.png"  width="400" height="500">
     </td>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Selection.png"  width="600" height="400">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Selection.png"  width="400" height="500">
     </td>
  </tr>
  <tr>
@@ -38,10 +38,10 @@ The Outfit of the Day Application will be an IOS and Android app made on Flutter
 </tr>
  <tr>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Calendar.png"  width="300" height="500">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Calendar.png"  width="400" height="500">
     </td>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Settings.png"  width="600" height="400">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Settings.png"  width="400" height="500">
     </td>
  </tr>
 </table>
