@@ -26,6 +26,7 @@ The figure below classifys our app with a user that has a 0 to infinte wardrobes
 ### 3.3 Sequence Diagram
 <div align="center">
 <img src="https://user-images.githubusercontent.com/113374113/193301027-371d83ad-363c-4823-8154-d72ae0e8b7be.png"  width="600" height="400">
+<text>Figure 3.3</text>
 </div>
 
 # 4 UI 
