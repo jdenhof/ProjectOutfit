@@ -19,10 +19,14 @@ The figure below demonstrates how a user will interact with the app. They first 
 ### 3.2 Class Diagram
 The figure below classifys our app with a user that has a 0 to infinte wardrobes. A wardrobe consists of all the clothing items that belong to the wardrobe as well as the outfits those clothing items make up. The user will use the calendar class to filter outfits worn based on filter input.
 >>>>
+<div align="center">
 <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/ClassDiagram.png"  width="600" height="400">
+</div>
 
 ### 3.3 Sequence Diagram
+<div align="center">
 <img src="https://user-images.githubusercontent.com/113374113/193301027-371d83ad-363c-4823-8154-d72ae0e8b7be.png"  width="600" height="400">
+</div>
 
 # 4 UI 
 <table border="0">
