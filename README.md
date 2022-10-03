@@ -26,19 +26,25 @@ The Outfit of the Day Application will be an IOS and Android app made on Flutter
  </tr>
  <tr>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.png"  width="600" height="400">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.png"  width="300" height="500">
+    </td>
+    <td>
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Selection.png"  width="600" height="400">
+    </td>
+ </tr>
+ <tr>
+    <td><b style="font-size:30px">Calendar of Outfits</b></td>
+    <td><b style="font-size:30px">Settings</b></td>
+</tr>
+ <tr>
+    <td>
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Calendar.png"  width="300" height="500">
+    </td>
+    <td>
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Settings.png"  width="600" height="400">
     </td>
  </tr>
 </table>
-
-## Home
-![Home](https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.png)
-## Outfit Selector
-![Selection](https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Selection.png)
-## Outfit Calendar
-![Calendar](https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Calendar.png)
-##  Settings
-![Settings](https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Settings.png)
 
 
 
