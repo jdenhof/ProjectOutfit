@@ -25,8 +25,9 @@ The Outfit of the Day Application will be an IOS and Android app made on Flutter
     <td><b style="font-size:30px">Outfit Selector</b></td>
  </tr>
  <tr>
+    <td>
     <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.png"  width="600" height="400">
-    <td>Lorem ipsum ...</td>
+    </td>
  </tr>
 </table>
 
