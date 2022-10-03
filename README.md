@@ -9,18 +9,32 @@ Outfit of the Day -"OOTD" strives to reconcile this adveristy by providing a pla
 The Outfit of the Day Application will be an IOS and Android app made on Flutter using Google Cloud Functions to route traffic to Firebase to store the user's saved outfits and clothing.
 
 ![Project Outfit Architecture Diagram](https://user-images.githubusercontent.com/113374113/193295951-4de34ec4-aa7b-4718-acef-6d26425b8907.png)
+<div align="center">
+    <text>Figure 3</text>
+</div>
+
 ### 3.1 Usecase Diagram
 The figure below demonstrates how a user will interact with the app. They first will have to login/register that will use authentication. The user can store an outfit which conists of taking a picture and categorizing outfit. The user can also add individual clothing items. The user can lastly view past outfits.
 >>>>
 <div align="center">
-<img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/UsecaseDiagram.png"  width="400" height="400">
+    <div>
+        <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/UsecaseDiagram.png"  width="400" height="400">
+    </div>
+    <div>
+        <text>Figure 3.1</text>
+    </div>
 </div>
 
 ### 3.2 Class Diagram
 The figure below classifys our app with a user that has a 0 to infinte wardrobes. A wardrobe consists of all the clothing items that belong to the wardrobe as well as the outfits those clothing items make up. The user will use the calendar class to filter outfits worn based on filter input.
 >>>>
 <div align="center">
-<img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/ClassDiagram.png"  width="600" height="400">
+    <div>
+        <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/ClassDiagram.png"  width="600" height="400">
+    </div>
+    <div>
+        <text>Figure 3.2</text>
+    </div>
 </div>
 
 ### 3.3 Sequence Diagram
