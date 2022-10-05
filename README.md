@@ -38,6 +38,7 @@ The figure below classifys our app with a user that has a 0 to infinte wardrobes
 </div>
 
 ### 3.3 Sequence Diagram
+The figure below shows the interactions between the user and various classes within our application.  
 <div align="center">
     <div>
         <img src="https://user-images.githubusercontent.com/113374113/193301027-371d83ad-363c-4823-8154-d72ae0e8b7be.png"  width="600" height="400">
