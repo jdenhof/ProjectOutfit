@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'BottomBar.dart';
+import 'bottom_navbar.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+  const HomePage({Key? key}) : super(key: key);
 
-  final String title;
+  final _fabLocation = FloatingActionButtonLocation.endDocked;
 
+  final String title = 'Home Page';
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -29,17 +30,15 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: true
-          ? FloatingActionButton(
-              onPressed: () {},
-              tooltip: 'Create',
-              child: const Icon(Icons.add),
-            )
-          : null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      bottomNavigationBar: BottomBar(
-        fabLocation: FloatingActionButtonLocation.endDocked,
-        shape: true ? const CircularNotchedRectangle() : null,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Add Outfit',
+        child: const Icon(Icons.photo_camera),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavBar(
+        fabLocation: widget._fabLocation,
+        shape: const CircularNotchedRectangle(),
       ),
     );
   }
