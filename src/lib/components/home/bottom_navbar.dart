@@ -1,51 +1,58 @@
 import 'package:flutter/material.dart';
-import 'calendar_page.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
-    super.key,
-    required this.fabLocation,
-    required this.shape,
-  });
+    Key? key,
+    required this.pageController,
+  }) : super(key: key);
 
-  final FloatingActionButtonLocation fabLocation;
-  final NotchedShape shape;
+  final FloatingActionButtonLocation fabLocation =
+      FloatingActionButtonLocation.centerDocked;
+  final NotchedShape shape = const CircularNotchedRectangle();
   final double _iconSize = 40;
 
-  static final List<FloatingActionButtonLocation> centerLocations =
-      <FloatingActionButtonLocation>[
-    FloatingActionButtonLocation.centerDocked,
-    FloatingActionButtonLocation.centerFloat,
-  ];
+  final PageController pageController;
 
-  void _navigateToCalendar(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const CalendarPage(title: 'Calendar')));
+  @override
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  void _onNavItemTapped(int index) {
+    widget.pageController.jumpToPage(index);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.pageController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      shape: shape,
-      child: Row(children: <Widget>[
-        const Spacer(),
-        IconButton(
-          icon: const Icon(Icons.date_range),
-          iconSize: _iconSize,
-          onPressed: () {
-            _navigateToCalendar(context);
-          },
-        ),
-        const Spacer(),
-        const Spacer(),
-        const Spacer(),
-        IconButton(
-          icon: const Icon(Icons.checkroom),
-          iconSize: _iconSize,
-          onPressed: () {},
-        ),
-        const Spacer(),
-      ]),
+    return Container(
+      child: BottomNavigationBar(
+        onTap: _onNavItemTapped,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 10,
+        iconSize: 30,
+        currentIndex: widget.pageController.page?.toInt() ?? 0,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history_outlined),
+            activeIcon: Icon(Icons.history),
+            label: 'history',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: 'home',
+          ),
+        ],
+      ),
     );
   }
 }
