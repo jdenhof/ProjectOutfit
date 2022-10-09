@@ -2,21 +2,21 @@
 
 # Componenet Layout
 ## Core
-> -> AppBar <br>
-> -> Body <br>
->> -> Home <br>
->> -> Stylist <br>
->> -> Wardrobe <br>
->> -> History <br>
-> -> BottomNavBar <br>
+* AppBar  
+* Body  
+  * Home  
+  * Stylist  
+  * Wardrobe  
+  * History  
+* BottomNavBar   
 ## Home
 // Opening of app with descriptor widgent and recent history
-> -> Container   <br>
->> -> Column   <br>
->>> -> DescriptorWidget // Helpfull insight needed when making an outfit <br>
->> -> Recents  <br>
->> -> Container <br>
->>> -> Container <br>
+* Container  
+   * Column  
+        * DescriptorWidget // Helpfull insight needed when making an outfit  
+    * Recents  
+    * Container   
+        * Container  
 ## Stylist
 // Manages, categorizes, and adds outfits and clothing items
 ...
