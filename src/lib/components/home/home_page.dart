@@ -4,31 +4,31 @@ import 'bottom_navbar.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  final _fabLocation = FloatingActionButtonLocation.endDocked;
+  //List of pages accesible from home screen.
+  static const List<Widget> _homePages = <Widget>[
+    Center(child: Text('calendar')),
+    Center(child: Text('home')),
+  ];
 
-  final String title = 'Home Page';
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  final PageController pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('OOTD'),
         titleTextStyle:
             const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Hello, World!',
-            ),
-          ],
-        ),
+      body: PageView(
+        controller: pageController,
+        allowImplicitScrolling: false,
+        children: HomePage._homePages,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -36,9 +36,65 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.photo_camera),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomNavBar(
-        fabLocation: widget._fabLocation,
-        shape: const CircularNotchedRectangle(),
+      bottomNavigationBar: _BottomNavBar(
+        pageController: pageController,
+      ),
+    );
+  }
+}
+
+class _BottomNavBar extends StatefulWidget {
+  const _BottomNavBar({
+    Key? key,
+    required this.pageController,
+  }) : super(key: key);
+
+  final FloatingActionButtonLocation fabLocation =
+      FloatingActionButtonLocation.centerDocked;
+  final NotchedShape shape = const CircularNotchedRectangle();
+  final double _iconSize = 40;
+
+  final PageController pageController;
+
+  @override
+  State<_BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<_BottomNavBar> {
+  void _onNavItemTapped(int index) {
+    widget.pageController.jumpToPage(index);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.pageController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: BottomNavigationBar(
+        onTap: _onNavItemTapped,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 10,
+        iconSize: 30,
+        currentIndex: widget.pageController.page?.toInt() ?? 0,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history_outlined),
+            activeIcon: Icon(Icons.history),
+            label: 'history',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: 'home',
+          ),
+        ],
       ),
     );
   }
