@@ -1,5 +1,6 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'bottom_navbar.dart';
+import 'package:app/components/camera_page/camera.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -31,7 +32,13 @@ class _HomePageState extends State<HomePage> {
         children: HomePage._homePages,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          await availableCameras().then((value) => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CameraScreen(cameras: value)),
+              ));
+        },
         tooltip: 'Add Outfit',
         child: const Icon(Icons.photo_camera),
       ),
@@ -52,7 +59,6 @@ class _BottomNavBar extends StatefulWidget {
   final FloatingActionButtonLocation fabLocation =
       FloatingActionButtonLocation.centerDocked;
   final NotchedShape shape = const CircularNotchedRectangle();
-  final double _iconSize = 40;
 
   final PageController pageController;
 
