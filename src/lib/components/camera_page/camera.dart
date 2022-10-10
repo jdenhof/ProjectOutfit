@@ -1,13 +1,11 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:app/main.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({
     super.key,
-    required this.cameras,
   });
-
-  final List<CameraDescription> cameras;
 
   @override
   State<CameraScreen> createState() => _CameraScreenState();
@@ -16,26 +14,16 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   late CameraController _cameraController;
 
-  Future initCamera(CameraDescription cameraDescription) async {
-    _cameraController = CameraController(
-      cameraDescription,
-      ResolutionPreset.high,
-    );
-    try {
-      await _cameraController.initialize().then((_) {
-        if (!mounted) return;
-        setState(() {});
-      });
-    } on CameraException catch (e) {
-      debugPrint("camera error $e");
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    // initialize the rear camera
-    initCamera(widget.cameras[0]);
+    _cameraController = CameraController(cameras[0], ResolutionPreset.max);
+    _cameraController.initialize().then((_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {});
+    });
   }
 
   @override
