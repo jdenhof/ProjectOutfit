@@ -36,13 +36,10 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Camera'),
-        ),
         body: SafeArea(
-          child: _cameraController.value.isInitialized
-              ? CameraPreview(_cameraController)
-              : const Center(child: CircularProgressIndicator()),
-        ));
+      child: _cameraController.value.isInitialized
+          ? CameraPreview(_cameraController)
+          : const Center(child: CircularProgressIndicator()),
+    ));
   }
 }
