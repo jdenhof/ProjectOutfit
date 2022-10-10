@@ -35,8 +35,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           await availableCameras().then((value) => Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => CameraScreen(cameras: value)),
+                MaterialPageRoute(builder: (context) => const CameraScreen()),
               ));
         },
         tooltip: 'Add Outfit',
