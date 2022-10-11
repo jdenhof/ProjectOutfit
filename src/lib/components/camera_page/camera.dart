@@ -112,14 +112,14 @@ class _CameraScreenState extends State<CameraScreen>
                 const Icon(
                   Icons.circle,
                   color: Colors.black38,
-                  size: 60,
+                  size: 80,
                 ),
                 Icon(
                   _isRearCameraSelected
                       ? Icons.camera_front
                       : Icons.camera_rear,
                   color: Colors.white,
-                  size: 30,
+                  size: 40,
                 ),
               ],
             ),
