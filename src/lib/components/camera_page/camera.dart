@@ -71,7 +71,6 @@ class _CameraScreenState extends State<CameraScreen>
       ),
       floatingActionButton: Row(
         children: [
-          //Flip Camera Icon
           InkWell(
             onTap: () async {
               try {

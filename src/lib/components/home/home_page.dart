@@ -82,27 +82,25 @@ class _BottomNavBarState extends State<_BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BottomNavigationBar(
-        onTap: _onNavItemTapped,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        elevation: 10,
-        iconSize: 30,
-        currentIndex: widget.pageController.page?.toInt() ?? 0,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history_outlined),
-            activeIcon: Icon(Icons.history),
-            label: 'history',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: 'home',
-          ),
-        ],
-      ),
+    return BottomNavigationBar(
+      onTap: _onNavItemTapped,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      elevation: 10,
+      iconSize: 30,
+      currentIndex: widget.pageController.page?.toInt() ?? 0,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.history_outlined),
+          activeIcon: Icon(Icons.history),
+          label: 'history',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          activeIcon: Icon(Icons.home),
+          label: 'home',
+        ),
+      ],
     );
   }
 }
