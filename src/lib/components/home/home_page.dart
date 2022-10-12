@@ -33,10 +33,12 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await availableCameras().then((value) => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CameraScreen()),
-              ));
+          await availableCameras().then(
+            (value) => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CameraScreen()),
+            ),
+          );
         },
         tooltip: 'Add Outfit',
         child: const Icon(Icons.photo_camera),
