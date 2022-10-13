@@ -1,5 +1,5 @@
 import 'package:camera/camera.dart';
-import 'package:app/app/app.dart';
+import 'package:OOTD/app/app.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final PageController pageController = PageController();
+  final PageController pageController = PageController(initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -30,25 +30,36 @@ class _HomePageState extends State<HomePage> {
         allowImplicitScrolling: false,
         children: HomePage._homePages,
       ),
-      floatingActionButton: FloatingActionButton(
-        heroTag: 'Camera',
-        onPressed: () async {
-          await availableCameras().then(
-            (value) => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const CameraScreen(),
-              ),
-            ),
-          );
-        },
-        tooltip: 'Add Outfit',
-        child: const Icon(Icons.photo_camera),
-      ),
+      floatingActionButton: const CameraActionButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: _BottomNavBar(
         pageController: pageController,
       ),
+    );
+  }
+}
+
+class CameraActionButton extends StatelessWidget {
+  const CameraActionButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      heroTag: 'Camera',
+      onPressed: () async {
+        await availableCameras().then(
+          (value) => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CameraScreen(),
+            ),
+          ),
+        );
+      },
+      tooltip: 'Add Outfit',
+      child: const Icon(Icons.photo_camera),
     );
   }
 }
@@ -58,10 +69,6 @@ class _BottomNavBar extends StatefulWidget {
     Key? key,
     required this.pageController,
   }) : super(key: key);
-
-  final FloatingActionButtonLocation fabLocation =
-      FloatingActionButtonLocation.centerDocked;
-  final NotchedShape shape = const CircularNotchedRectangle();
 
   final PageController pageController;
 
@@ -90,19 +97,27 @@ class _BottomNavBarState extends State<_BottomNavBar> {
       showUnselectedLabels: false,
       elevation: 10,
       iconSize: 30,
-      currentIndex: widget.pageController.page?.toInt() ?? 0,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.history_outlined),
-          activeIcon: Icon(Icons.history),
-          label: 'history',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          activeIcon: Icon(Icons.home),
-          label: 'home',
-        ),
+      currentIndex: widget.pageController.page?.toInt() ?? 1,
+      items: [
+        historyNavButton(),
+        homeNavButton(),
       ],
+    );
+  }
+
+  BottomNavigationBarItem homeNavButton() {
+    return const BottomNavigationBarItem(
+      icon: Icon(Icons.home_outlined),
+      activeIcon: Icon(Icons.home),
+      label: 'home',
+    );
+  }
+
+  BottomNavigationBarItem historyNavButton() {
+    return const BottomNavigationBarItem(
+      icon: Icon(Icons.history_outlined),
+      activeIcon: Icon(Icons.history),
+      label: 'history',
     );
   }
 }

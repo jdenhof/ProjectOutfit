@@ -1,3 +1,3 @@
 export 'package:flutter/material.dart';
-export 'package:app/main.dart';
-export 'package:app/components/camera/camera_page.dart';
+export 'package:OOTD/main.dart';
+export 'package:OOTD/components/camera/camera_page.dart';
