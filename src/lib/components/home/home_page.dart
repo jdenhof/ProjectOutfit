@@ -1,6 +1,5 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
-import 'package:app/components/camera_page/camera.dart';
+import 'package:app/app/app.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -32,11 +31,14 @@ class _HomePageState extends State<HomePage> {
         children: HomePage._homePages,
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'Camera',
         onPressed: () async {
           await availableCameras().then(
             (value) => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CameraScreen()),
+              MaterialPageRoute(
+                builder: (context) => const CameraScreen(),
+              ),
             ),
           );
         },

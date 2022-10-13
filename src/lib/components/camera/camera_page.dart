@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
-import 'package:app/main.dart';
+import 'package:app/app/app.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -69,69 +68,61 @@ class _CameraScreenState extends State<CameraScreen>
           }
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          InkWell(
-            onTap: () async {
-              try {
-                await _initializeControllerFuture;
-
-                final image = await _controller.takePicture();
-
-                if (!mounted) return;
-
-                await Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => DisplayPictureScreen(
-                      imagePath: image.path,
-                    ),
-                  ),
-                );
-              } catch (e) {
-                rethrow;
-              }
-            },
-            child: Stack(
-              alignment: Alignment.center,
-              children: const [
-                Icon(
-                  Icons.circle,
-                  color: Colors.black38,
-                  size: 80,
-                ),
-                Icon(
-                  Icons.camera_alt_outlined,
-                  color: Colors.white,
-                  size: 40,
-                ),
-              ],
+          Expanded(
+            flex: 1,
+            child: FloatingActionButton(
+              heroTag: 'FlipCamera',
+              onPressed: () async {
+                _initializeControllerFuture.whenComplete(() {
+                  rearCameraSelected = !rearCameraSelected;
+                  setState(() {
+                    initCamera();
+                  });
+                });
+              },
+              child: Icon(
+                rearCameraSelected
+                    ? Icons.camera_front
+                    : Icons.photo_camera_back,
+                color: Colors.white,
+                size: 40,
+              ),
             ),
           ),
-          InkWell(
-            onTap: () async {
-              rearCameraSelected = !rearCameraSelected;
-              setState(() {
-                initCamera();
-              });
-            },
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                const Icon(
-                  Icons.circle,
-                  color: Colors.black38,
-                  size: 80,
-                ),
-                Icon(
-                  rearCameraSelected
-                      ? Icons.camera_front
-                      : Icons.photo_camera_back,
-                  color: Colors.white,
-                  size: 40,
-                ),
-              ],
+          Expanded(
+            flex: 1,
+            child: FloatingActionButton(
+              heroTag: 'TakePicture',
+              onPressed: () async {
+                try {
+                  await _initializeControllerFuture;
+
+                  final image = await _controller.takePicture();
+
+                  if (!mounted) return;
+
+                  await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DisplayPictureScreen(
+                        imagePath: image.path,
+                      ),
+                    ),
+                  );
+                } catch (e) {
+                  rethrow;
+                }
+              },
+              child: const Icon(
+                Icons.camera_alt_outlined,
+                color: Colors.white,
+                size: 40,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -148,26 +139,16 @@ class DisplayPictureScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Display the Picture')),
       body: Image.file(File(imagePath)),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          InkWell(
-            onTap: () {},
-            child: Stack(
-              alignment: Alignment.center,
-              children: const [
-                Icon(
-                  Icons.circle,
-                  color: Colors.black38,
-                  size: 80,
-                ),
-                Icon(
-                  Icons.check_box_outlined,
-                  color: Colors.white,
-                  size: 40,
-                ),
-              ],
+          FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(
+              Icons.check,
             ),
-          ),
+          )
         ],
       ),
     );
