@@ -1,4 +1,4 @@
-name: app
+name: OOTD
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -31,10 +31,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   camera: ^0.10.0+3
 

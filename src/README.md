@@ -14,9 +14,7 @@
 * Container  
    * Column  
         * DescriptorWidget // Helpfull insight needed when making an outfit  
-    * Recents  
-    * Container   
-        * Container  
+    * Recents   
 ## Stylist
 // Manages, categorizes, and adds outfits and clothing items
 ...
