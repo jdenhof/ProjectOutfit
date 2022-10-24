@@ -1,5 +1,5 @@
 import 'package:camera/camera.dart';
-import 'package:OOTD/app/app.dart';
+import 'package:ootd/src/app.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
