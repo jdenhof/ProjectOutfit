@@ -1,12 +1,15 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'components/home/home_page.dart';
+import 'package:ootd/src/widget_tree.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 List<CameraDescription> cameras = [];
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  //TODO~Pass warning to ui
   try {
-    WidgetsFlutterBinding.ensureInitialized();
     cameras = await availableCameras();
   } on CameraException catch (e) {
     throw ('Error in fetching the cameras: $e');
@@ -24,7 +27,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const WidgetTree(),
     );
   }
 }

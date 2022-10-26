@@ -12,16 +12,17 @@ class _CameraScreenState extends State<CameraScreen>
     with WidgetsBindingObserver {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  late Future<void> _lockCaptureFuture;
   bool rearCameraSelected = false;
 
   void initCamera() {
     _controller = CameraController(
       cameras[rearCameraSelected ? 0 : 1],
-      ResolutionPreset.high,
+      ResolutionPreset.ultraHigh,
     );
 
-    // Next, initialize the controller. This returns a Future.
     _initializeControllerFuture = _controller.initialize();
+    _lockCaptureFuture = _controller.lockCaptureOrientation();
   }
 
   void takePicture() async {
@@ -32,7 +33,7 @@ class _CameraScreenState extends State<CameraScreen>
 
       if (!mounted) return;
 
-      await Navigator.of(context).push(
+      Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => DisplayPictureScreen(
             imagePath: image.path,
@@ -54,14 +55,12 @@ class _CameraScreenState extends State<CameraScreen>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     final CameraController cameraController = _controller;
 
-    if (!cameraController.value.isInitialized) {
-      return;
-    }
-
-    if (state == AppLifecycleState.inactive) {
-      cameraController.dispose();
-    } else if (state == AppLifecycleState.resumed) {
-      initCamera();
+    if (cameraController.value.isInitialized) {
+      if (state == AppLifecycleState.inactive) {
+        cameraController.dispose();
+      } else if (state == AppLifecycleState.resumed) {
+        initCamera();
+      }
     }
   }
 
@@ -81,7 +80,12 @@ class _CameraScreenState extends State<CameraScreen>
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return CameraPreview(_controller);
+            return FutureBuilder<void>(
+              future: _lockCaptureFuture,
+              builder: (context, snapshot) {
+                return CameraPreview(_controller);
+              },
+            );
           } else {
             return const Center(child: CircularProgressIndicator());
           }
@@ -147,16 +151,11 @@ class DisplayPictureScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Display the Picture')),
       body: Image.file(File(imagePath)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FloatingActionButton(
-            onPressed: () {},
-            child: const Icon(
-              Icons.check,
-            ),
-          )
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(
+          Icons.check,
+        ),
       ),
     );
   }

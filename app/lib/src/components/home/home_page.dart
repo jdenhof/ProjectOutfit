@@ -1,5 +1,5 @@
-import 'package:camera/camera.dart';
 import 'package:ootd/src/app.dart';
+import 'package:ootd/src/auth/auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,6 +17,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final PageController pageController = PageController(initialPage: 1);
 
+  Future<void> _signOut() async {
+    await Auth().signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +28,14 @@ class _HomePageState extends State<HomePage> {
         title: const Text('OOTD'),
         titleTextStyle:
             const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        actions: <Widget>[
+          ElevatedButton(onPressed: _signOut, child: const Icon(Icons.logout)),
+        ],
       ),
       body: PageView(
         controller: pageController,
-        allowImplicitScrolling: false,
+        allowImplicitScrolling: true,
+        pageSnapping: false,
         children: HomePage._homePages,
       ),
       floatingActionButton: const CameraActionButton(),
@@ -48,13 +56,11 @@ class CameraActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       heroTag: 'Camera',
-      onPressed: () async {
-        await availableCameras().then(
-          (value) => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const CameraScreen(),
-            ),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CameraScreen(),
           ),
         );
       },
