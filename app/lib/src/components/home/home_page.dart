@@ -29,7 +29,10 @@ class _HomePageState extends State<HomePage> {
         titleTextStyle:
             const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         actions: <Widget>[
-          ElevatedButton(onPressed: _signOut, child: const Icon(Icons.logout)),
+          ElevatedButton(
+            onPressed: _signOut,
+            child: const Icon(Icons.logout),
+          ),
         ],
       ),
       body: PageView(

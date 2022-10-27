@@ -1,6 +1,6 @@
-import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:ootd/src/app.dart';
+import 'package:ootd/src/components/camera/display_page.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -71,6 +71,7 @@ class _CameraScreenState extends State<CameraScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
@@ -124,27 +125,6 @@ class _CameraScreenState extends State<CameraScreen>
           Icons.camera_alt_outlined,
           color: Colors.white,
           size: 40,
-        ),
-      ),
-    );
-  }
-}
-
-class DisplayPictureScreen extends StatelessWidget {
-  final String imagePath;
-
-  const DisplayPictureScreen({super.key, required this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
-      body: Image.file(File(imagePath)),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(
-          Icons.check,
         ),
       ),
     );

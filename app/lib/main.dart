@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:ootd/src/components/wardrobe/outfit_selector.dart';
 import 'package:ootd/src/widget_tree.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -20,11 +21,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Outfit of the Day',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const WidgetTree(),
-    );
+        title: 'Outfit of the Day',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': ((context) => const WidgetTree()),
+          OutfitSelector.routeName: (context) => const OutfitSelector(),
+        });
   }
 }
