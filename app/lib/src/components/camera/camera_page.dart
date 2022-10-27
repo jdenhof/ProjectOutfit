@@ -12,7 +12,6 @@ class _CameraScreenState extends State<CameraScreen>
     with WidgetsBindingObserver {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
-  late Future<void> _lockCaptureFuture;
   bool rearCameraSelected = false;
 
   void initCamera() {
@@ -22,7 +21,6 @@ class _CameraScreenState extends State<CameraScreen>
     );
 
     _initializeControllerFuture = _controller.initialize();
-    _lockCaptureFuture = _controller.lockCaptureOrientation();
   }
 
   void takePicture() async {
@@ -73,19 +71,11 @@ class _CameraScreenState extends State<CameraScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Take Picture"),
-      ),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return FutureBuilder<void>(
-              future: _lockCaptureFuture,
-              builder: (context, snapshot) {
-                return CameraPreview(_controller);
-              },
-            );
+            return CameraPreview(_controller);
           } else {
             return const Center(child: CircularProgressIndicator());
           }

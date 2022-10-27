@@ -29,6 +29,13 @@
             {
               "client_id": "1047765402693-84dfpcjt8pu1k7eklmrskgncd2h3lbm0.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1047765402693-551eghp6alqjforq8eg5rthol8a98gdi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "projectOutfit"
+              }
             }
           ]
         }

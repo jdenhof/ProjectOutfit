@@ -9,11 +9,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   //TODO~Pass warning to ui
-  try {
-    cameras = await availableCameras();
-  } on CameraException catch (e) {
-    throw ('Error in fetching the cameras: $e');
-  }
+  cameras = await availableCameras();
+
   runApp(const App());
 }
 
