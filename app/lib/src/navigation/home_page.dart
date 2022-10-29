@@ -1,5 +1,7 @@
-import 'package:ootd/src/app.dart';
+import 'package:flutter/material.dart';
 import 'package:ootd/src/auth/auth.dart';
+import 'package:ootd/src/navigation/capture/camera_page.dart';
+import 'package:ootd/src/navigation/factory/wardrobe_factory.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,6 +31,16 @@ class _HomePageState extends State<HomePage> {
         titleTextStyle:
             const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         actions: <Widget>[
+          ElevatedButton(
+            child: const Icon(Icons.checkroom_outlined),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                WardrobeFactory.routeName,
+              );
+            },
+          ),
+          const Spacer(),
           ElevatedButton(
             onPressed: _signOut,
             child: const Icon(Icons.logout),

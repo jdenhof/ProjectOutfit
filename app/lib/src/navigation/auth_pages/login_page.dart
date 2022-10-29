@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ootd/src/app.dart';
+import 'package:flutter/material.dart';
 import 'package:ootd/src/auth/auth.dart';
 
 class _LoginPageState extends State<LoginPage> {

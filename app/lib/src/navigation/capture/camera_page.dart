@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
-import 'package:ootd/src/app.dart';
-import 'package:ootd/src/components/camera/display_page.dart';
+import 'package:flutter/material.dart';
+import 'package:ootd/main.dart';
+import 'package:ootd/src/navigation/capture/display_page.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});

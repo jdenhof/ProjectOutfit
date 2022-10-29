@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:ootd/src/components/wardrobe/outfit_selector.dart';
+import 'package:ootd/src/navigation/factory/outfit_factory.dart';
 
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
@@ -15,7 +15,7 @@ class DisplayPictureScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-          Navigator.pushReplacementNamed(context, OutfitSelector.routeName,
+          Navigator.pushReplacementNamed(context, OutfitFactory.routeName,
               arguments: imagePath)
         },
         child: const Icon(

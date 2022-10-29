@@ -1,9 +1,9 @@
-import 'package:ootd/src/app.dart';
+import 'package:flutter/material.dart';
 import 'package:ootd/src/auth/auth.dart';
-import 'package:ootd/src/components/home/home_page.dart';
-import 'package:ootd/src/auth/login_page.dart';
+import 'package:ootd/src/navigation/home_page.dart';
+import 'package:ootd/src/navigation/auth_pages/login_page.dart';
 
-class _WidgetTreeState extends State<WidgetTree> {
+class _AuthRouterState extends State<AuthRouter> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -19,9 +19,9 @@ class _WidgetTreeState extends State<WidgetTree> {
   }
 }
 
-class WidgetTree extends StatefulWidget {
-  const WidgetTree({Key? key}) : super(key: key);
+class AuthRouter extends StatefulWidget {
+  const AuthRouter({Key? key}) : super(key: key);
 
   @override
-  State<WidgetTree> createState() => _WidgetTreeState();
+  State<AuthRouter> createState() => _AuthRouterState();
 }
