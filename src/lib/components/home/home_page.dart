@@ -1,5 +1,10 @@
+//import 'dart:html';
+
 import 'package:camera/camera.dart';
 import 'package:OOTD/app/app.dart';
+import 'package:intl/intl.dart';
+import 'package:open_weather_client/open_weather.dart';
+import 'package:open_weather_client/widgets/weather_widget_by_zip_code.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -7,7 +12,7 @@ class HomePage extends StatefulWidget {
   //List of pages accesible from home screen.
   static const List<Widget> _homePages = <Widget>[
     Center(child: Text('calendar')),
-    Center(child: Text('home')),
+    Center(child: WeatherDisplay()),
   ];
 
   @override
@@ -21,7 +26,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('OOTD'),
+        centerTitle: true, //overrides Android default of left aligned title
+        title: const Text('Outfit of the Day'),
         titleTextStyle:
             const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
@@ -35,6 +41,46 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: _BottomNavBar(
         pageController: pageController,
       ),
+    );
+  }
+}
+
+class DateDisplay extends StatefulWidget {
+  const DateDisplay({super.key});
+
+  @override
+  State<DateDisplay> createState() => _DateDisplayState();
+}
+
+class _DateDisplayState extends State<DateDisplay> {
+  @override
+  Widget build(BuildContext context) {
+    final String currentDate =
+        DateFormat('EEEE, MMM dd').format(DateTime.now());
+    //format date to display "Day of the Week, Month name and the date"
+    return Text(currentDate);
+  }
+}
+
+class WeatherDisplay extends StatefulWidget {
+  const WeatherDisplay({super.key});
+
+  @override
+  State<WeatherDisplay> createState() => _WeatherDisplayState();
+}
+
+class _WeatherDisplayState extends State<WeatherDisplay> {
+  String key = '654ee447a45eb25a9a51f53f8a4d693e';
+  int zip = 49505;
+  String country = 'US';
+  @override
+  Widget build(BuildContext context) {
+    return OpenWeatherByZipCode(
+      apiKey: key,
+      zipCode: zip,
+      countryCode: country,
+      weatherUnits: WeatherUnits.IMPERIAL,
+      color: Colors.black,
     );
   }
 }
