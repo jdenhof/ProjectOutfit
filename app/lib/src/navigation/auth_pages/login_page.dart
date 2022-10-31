@@ -42,8 +42,10 @@ class _LoginPageState extends State<LoginPage> {
   Widget _entryFeild(
     String title,
     TextEditingController controller,
+    bool obscure,
   ) {
     return TextField(
+      obscureText: obscure,
       controller: controller,
       decoration: InputDecoration(
         labelText: title,
@@ -85,8 +87,8 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _entryFeild('email', _controllerEmail),
-            _entryFeild('password', _controllerPassword),
+            _entryFeild('email', _controllerEmail, false),
+            _entryFeild('password', _controllerPassword, true),
             _errorMessage(),
             _loginOrRegisterButton(),
             _submitButton(),

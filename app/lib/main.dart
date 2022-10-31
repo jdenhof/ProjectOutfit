@@ -4,6 +4,7 @@ import 'package:ootd/src/navigation/factory/outfit_factory.dart';
 import 'package:ootd/src/navigation/factory/wardrobe_factory.dart';
 import 'package:ootd/src/navigation/auth_pages/auth_router.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:ootd/src/navigation/factory/clothe_factory.dart';
 
 List<CameraDescription> cameras = [];
 
@@ -30,6 +31,7 @@ class App extends StatelessWidget {
           '/': ((context) => const AuthRouter()),
           OutfitFactory.routeName: (context) => const OutfitFactory(),
           WardrobeFactory.routeName: (context) => const WardrobeFactory(),
+          ClotheFactory.routeName: (context) => const ClotheFactory(),
         });
   }
 }
