@@ -4,7 +4,9 @@ import 'package:ootd/main.dart';
 import 'package:ootd/src/navigation/capture/display_page.dart';
 
 class CameraScreen extends StatefulWidget {
-  const CameraScreen({super.key});
+  const CameraScreen({super.key, required this.display});
+
+  final bool display;
   @override
   State<CameraScreen> createState() => _CameraScreenState();
 }
@@ -31,14 +33,17 @@ class _CameraScreenState extends State<CameraScreen>
       final image = await _controller.takePicture();
 
       if (!mounted) return;
-
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => DisplayPictureScreen(
-            imagePath: image.path,
+      if (widget.display) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => DisplayPictureScreen(
+              imagePath: image,
+            ),
           ),
-        ),
-      );
+        );
+      } else {
+        Navigator.pop(context, image);
+      }
     } catch (e) {
       rethrow;
     }

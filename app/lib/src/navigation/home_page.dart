@@ -75,8 +75,12 @@ class CameraActionButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const CameraScreen(),
+            builder: (context) => const CameraScreen(display: true),
           ),
+        ).then(
+          (value) {
+            if (value != null) {}
+          },
         );
       },
       tooltip: 'Add Outfit',
