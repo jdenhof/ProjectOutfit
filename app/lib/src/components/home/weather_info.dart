@@ -16,7 +16,14 @@ class _DateDisplayState extends State<DateDisplay> {
     final String currentDate =
         DateFormat('EEEE, MMM dd').format(DateTime.now());
     //format date to display "Day of the Week, Month name and the date"
-    return Text(currentDate);
+    return Text(
+      currentDate,
+      style: TextStyle(
+        color: Colors.grey,
+        fontWeight: FontWeight.bold,
+        fontSize: 40,
+      ),
+    );
   }
 }
 
@@ -37,8 +44,8 @@ class _WeatherDisplayState extends State<WeatherDisplay> {
       apiKey: key,
       zipCode: zip,
       countryCode: country,
-      weatherUnits: WeatherUnits.STANDARD,
-      color: Colors.black,
+      weatherUnits: WeatherUnits.IMPERIAL,
+      color: Colors.grey,
     );
   }
 }

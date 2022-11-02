@@ -24,7 +24,8 @@ class App extends StatelessWidget {
     return MaterialApp(
         title: 'Outfit of the Day',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.deepPurple,
+          fontFamily: 'Kalam',
         ),
         initialRoute: '/',
         routes: {
