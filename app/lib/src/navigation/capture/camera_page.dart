@@ -4,9 +4,15 @@ import 'package:ootd/main.dart';
 import 'package:ootd/src/navigation/capture/display_page.dart';
 
 class CameraScreen extends StatefulWidget {
-  const CameraScreen({super.key, required this.display});
+  const CameraScreen({
+    super.key,
+    required this.reciever,
+    required this.display,
+  });
 
+  final String reciever;
   final bool display;
+
   @override
   State<CameraScreen> createState() => _CameraScreenState();
 }
@@ -38,6 +44,7 @@ class _CameraScreenState extends State<CameraScreen>
           MaterialPageRoute(
             builder: (context) => DisplayPictureScreen(
               imagePath: image,
+              reciever: widget.reciever,
             ),
           ),
         );

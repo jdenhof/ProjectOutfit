@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:ootd/src/components/clothe_factory/clothe_item.dart';
 
+typedef OnPressedCallback = void Function();
+
 //Confirms and adds Clothing item
 class ConfirmWidget extends StatelessWidget {
   final ClothingItem clothingItem;
+
+  final OnPressedCallback onPressed;
+
   const ConfirmWidget({
     Key? key,
     required this.clothingItem,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -14,7 +20,7 @@ class ConfirmWidget extends StatelessWidget {
     return Expanded(
         child: FloatingActionButton(
       heroTag: "ConfirmButton",
-      onPressed: (() => ClothingItem.validator(clothingItem)),
+      onPressed: onPressed,
       backgroundColor: Colors.green,
       child: const Icon(Icons.check),
     ));

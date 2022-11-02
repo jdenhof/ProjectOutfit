@@ -7,7 +7,7 @@ class _AuthRouterState extends State<AuthRouter> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: Auth().authStateChanges,
+      stream: FirebaseService().authStateChanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return const HomePage();

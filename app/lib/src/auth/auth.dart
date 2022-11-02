@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Auth {
+class FirebaseService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   User? get currentUser => _firebaseAuth.currentUser;
-
-  FirebaseFirestore db = FirebaseFirestore.instance;
 
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
@@ -30,7 +29,7 @@ class Auth {
           password: password,
         )
         .then((value) => {
-              db.collection('users').doc(value.user?.uid).set({email: email})
+              _db.collection('users').doc(value.user?.uid).set({email: email}),
             });
   }
 

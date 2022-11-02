@@ -39,11 +39,12 @@ class _StaticDisplayState extends State<StaticDisplay> {
             const UploadPhoto(),
             //Clothing Item Data Section
             InfoDisplay(
-                name: widget.name,
-                category: widget.category,
-                type: widget.type,
-                brand: widget.brand,
-                tags: widget.tags),
+              name: widget.name,
+              category: widget.category,
+              type: widget.type,
+              brand: widget.brand,
+              tags: widget.tags,
+            ),
           ],
         ),
       ),
@@ -78,6 +79,7 @@ class _UploadPhotoState extends State<UploadPhoto> {
                     MaterialPageRoute(
                       builder: (context) => const CameraScreen(
                         display: false,
+                        reciever: '',
                       ),
                     ),
                   )

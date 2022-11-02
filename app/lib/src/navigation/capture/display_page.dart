@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 class DisplayPictureScreen extends StatelessWidget {
   final XFile imagePath;
+  final String reciever;
 
-  const DisplayPictureScreen({super.key, required this.imagePath});
+  const DisplayPictureScreen(
+      {super.key, required this.reciever, required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,8 @@ class DisplayPictureScreen extends StatelessWidget {
       body: Image.file(File(imagePath.path)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {Navigator.pop(context, imagePath)},
+        onPressed: () =>
+            {Navigator.pushNamed(context, reciever, arguments: imagePath)},
         child: const Icon(
           Icons.check,
         ),
