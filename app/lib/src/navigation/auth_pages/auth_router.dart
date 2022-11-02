@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ootd/src/auth/auth.dart';
-import 'package:ootd/src/navigation/home_page.dart';
+import 'package:ootd/src/navigation/home/home_page.dart';
 import 'package:ootd/src/navigation/auth_pages/login_page.dart';
 
 class _AuthRouterState extends State<AuthRouter> {
