@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ootd/src/auth/auth.dart';
 import 'package:ootd/src/navigation/capture/camera_page.dart';
+import 'package:ootd/src/navigation/factory/outfit_factory.dart';
 import 'package:ootd/src/navigation/factory/wardrobe_factory.dart';
 import 'package:ootd/src/components/home/home_tab.dart';
 import 'package:ootd/src/components/home/history_tab.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   //List of pages accesible from home screen.
   static const List<Widget> _homePages = <Widget>[
@@ -22,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   final PageController pageController = PageController(initialPage: 1);
 
   Future<void> _signOut() async {
-    await Auth().signOut();
+    await FirebaseService().signOut();
   }
 
   @override
@@ -77,7 +80,10 @@ class CameraActionButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const CameraScreen(display: true),
+            builder: (context) => const CameraScreen(
+              display: true,
+              reciever: OutfitFactory.routeName,
+            ),
           ),
         ).then(
           (value) {

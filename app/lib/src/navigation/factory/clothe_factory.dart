@@ -84,8 +84,10 @@ class _ClotheFactoryState extends State<ClotheFactory> {
               children: [
                 const CancelButton(),
                 ConfirmWidget(
-                  clothingItem: clothingItem,
-                ),
+                    clothingItem: clothingItem,
+                    onPressed: () {
+                      if (ClothingItem.validator(clothingItem)) {}
+                    }),
               ],
             )
           : null,
