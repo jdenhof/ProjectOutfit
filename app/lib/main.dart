@@ -1,37 +1,36 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:ootd/src/navigation/factory/outfit_factory.dart';
-import 'package:ootd/src/navigation/factory/wardrobe_factory.dart';
-import 'package:ootd/src/navigation/auth_pages/auth_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:ootd/src/navigation/factory/clothe_factory.dart';
-
-List<CameraDescription> cameras = [];
+import 'package:ootd/riverpod/top_level_providers.dart';
+import 'package:ootd/riverpod/auth_widget.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  cameras = await availableCameras();
-  runApp(const App());
+  runApp(ProviderScope(
+    child: MyApp(),
+  ));
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
-
+class MyApp extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final firebaseAuth = ref.watch(firebaseAuthProvider);
     return MaterialApp(
-        title: 'Outfit of the Day',
-        theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          fontFamily: 'Kalam',
+      theme: ThemeData(primarySwatch: Colors.indigo),
+      debugShowCheckedModeBanner: false,
+      home: AuthWidget(
+        nonSignedInBuilder: (_) => Consumer(
+          builder: (context, ref, _) {
+            final didCompleteOnboarding =
+                ref.watch(onboardingViewModelProvider);
+            return didCompleteOnboarding ? SignInPage() : OnboardingPage();
+          },
         ),
-        initialRoute: '/',
-        routes: {
-          '/': ((context) => const AuthRouter()),
-          OutfitFactory.routeName: (context) => const OutfitFactory(),
-          WardrobeFactory.routeName: (context) => const WardrobeFactory(),
-          ClotheFactory.routeName: (context) => const ClotheFactory(),
-        });
+        signedInBuilder: (_) => HomePage(),
+      ),
+      onGenerateRoute: (settings) =>
+          AppRouter.onGenerateRoute(settings, firebaseAuth),
+    );
   }
 }
