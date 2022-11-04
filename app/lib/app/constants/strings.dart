@@ -32,4 +32,6 @@ class Strings {
   // Account page
   static const String account = 'Account';
   static const String accountPage = 'Account Page';
+
+  static const String outfitFactory = 'Add Outfit';
 }

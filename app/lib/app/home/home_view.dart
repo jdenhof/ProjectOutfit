@@ -1,26 +1,42 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ootd/app/constants/strings.dart';
 import 'package:ootd/app/models/wardrobe.dart';
-import 'package:ootd/app/services/firestore_database.dart';
 import 'package:ootd/app/top_level_providers.dart';
 
 // watch database
-class HomeView extends ConsumerWidget {
+class HomeView extends ConsumerStatefulWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends ConsumerState<HomeView> {
+  @override
+  Widget build(BuildContext context) {
+    final authProvider = ref.watch(firebaseAuthProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text(Strings.homePage),
+        centerTitle: true,
         actions: <Widget>[
-          IconButton(icon: const Icon(),)
           IconButton(
-            icon: const Icon(Icons.add, color: Colors.white),
-            onPressed: () => {},
+            icon: Icon(Icons.logout_outlined),
+            selectedIcon: Icon(Icons.logout),
+            onPressed: () => authProvider.signOut(),
+          ),
+          IconButton(
+            icon: const Icon(Icons.checkroom_outlined, color: Colors.white),
+            onPressed: () {},
+            selectedIcon: Icon(Icons.checkroom),
           ),
         ],
       ),
       body: _buildContents(context, ref),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+      ),
     );
   }
 

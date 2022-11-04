@@ -12,14 +12,16 @@ class _HomePageState extends State<HomePage> {
   TabItem _currentTab = TabItem.home;
 
   final Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
-    TabItem.home: GlobalKey<NavigatorState>(),
     TabItem.history: GlobalKey<NavigatorState>(),
+    TabItem.factory: GlobalKey<NavigatorState>(),
+    TabItem.home: GlobalKey<NavigatorState>(),
   };
 
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
-      TabItem.home: (_) => HomeView(),
       TabItem.history: (_) => Center(child: Text("History")),
+      TabItem.factory: (_) => Center(),
+      TabItem.home: (_) => HomeView(),
     };
   }
 
