@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:ootd/riverpod/top_level_providers.dart';
-import 'package:ootd/riverpod/auth_widget.dart';
-import 'package:ootd/riverpod/signin_page.dart';
-import 'package:ootd/riverpod/routing/app_router.dart';
+import 'package:ootd/app/top_level_providers.dart';
+import 'package:ootd/app/auth_widget.dart';
+import 'package:ootd/app/signin_page.dart';
+import 'package:ootd/app/routing/app_router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
