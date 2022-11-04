@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ootd/src/components/home/weather_info.dart';
+import 'package:ootd/src/components/home/date_display.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({
@@ -16,7 +17,7 @@ class _HomeTabState extends State<HomeTab> {
     return Center(
       child: Column(children: const [
         DateDisplay(),
-        WeatherDisplay(),
+        //WeatherDisplay(),
       ]),
     );
   }
