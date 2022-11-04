@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:ootd/riverpod/top_level_providers.dart';
 import 'package:ootd/riverpod/auth_widget.dart';
 import 'package:ootd/riverpod/signin_page.dart';
-import 'package:ootd/riverpod/app_router.dart';
+import 'package:ootd/riverpod/routing/app_router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,12 @@ class MyApp extends ConsumerWidget {
         nonSignedInBuilder: (_) => Consumer(
           builder: (context, ref, _) => SignInPage(),
         ),
-        signedInBuilder: (_) => const Center(child: Text("hello")),
+        signedInBuilder: (_) => Center(
+            child: ElevatedButton(
+                onPressed: () {
+                  firebaseAuth.signOut();
+                },
+                child: Text("Sign Out"))),
       ),
       onGenerateRoute: (settings) =>
           AppRouter.onGenerateRoute(settings, firebaseAuth),
