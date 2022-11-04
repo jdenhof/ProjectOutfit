@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:ootd/services/firestore_services.dart';
-import 'package:ootd/services/firestore_path.dart';
-import 'package:ootd/models/wardrobe.dart';
-import 'package:ootd/models/clothing_item.dart';
+import 'package:ootd/riverpod/services/firestore_services.dart';
+import 'package:ootd/riverpod/services/firestore_path.dart';
+import 'package:ootd/riverpod/models/wardrobe.dart';
+import 'package:ootd/riverpod/models/clothing_item.dart';
 
 abstract class Database {
   Future<void> setWardrobe(Wardrobe wardrobe);

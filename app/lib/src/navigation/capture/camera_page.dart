@@ -24,11 +24,6 @@ class _CameraScreenState extends State<CameraScreen>
   bool rearCameraSelected = false;
 
   void initCamera() {
-    _controller = CameraController(
-      cameras[rearCameraSelected ? 0 : 1],
-      ResolutionPreset.ultraHigh,
-    );
-
     _initializeControllerFuture = _controller.initialize();
   }
 
