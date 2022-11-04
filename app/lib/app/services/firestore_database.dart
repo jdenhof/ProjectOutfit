@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:ootd/riverpod/services/firestore_services.dart';
-import 'package:ootd/riverpod/services/firestore_path.dart';
-import 'package:ootd/riverpod/models/wardrobe.dart';
-import 'package:ootd/riverpod/models/clothing_item.dart';
+import 'package:ootd/app/services/firestore_services.dart';
+import 'package:ootd/app/services/firestore_path.dart';
+import 'package:ootd/app/models/wardrobe.dart';
+import 'package:ootd/app/models/clothing_item.dart';
 
 abstract class Database {
   Future<void> setWardrobe(Wardrobe wardrobe);
@@ -53,6 +53,8 @@ class FirestoreDatabase implements Database {
         path: FirestorePath.wardrobes(uid),
         builder: (data, documentId) => Wardrobe.fromMap(data, documentId),
       );
+
+  currentWardrobe() {}
 
   /*
   Future<void> setJob(Job job) => _service.setData(

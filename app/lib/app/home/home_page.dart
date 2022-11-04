@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ootd/riverpod/home/cupertion_home_scaffold.dart';
-import 'package:ootd/riverpod/home/tab_item.dart';
+import 'package:ootd/app/home/home_view.dart';
+import 'package:ootd/app/home/tab_driver/cupertion_home_scaffold.dart';
+import 'package:ootd/app/home/tab_driver/tab_item.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,19 +9,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TabItem _currentTab = TabItem.jobs;
+  TabItem _currentTab = TabItem.home;
 
   final Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
-    TabItem.jobs: GlobalKey<NavigatorState>(),
-    TabItem.entries: GlobalKey<NavigatorState>(),
-    TabItem.account: GlobalKey<NavigatorState>(),
+    TabItem.home: GlobalKey<NavigatorState>(),
+    TabItem.history: GlobalKey<NavigatorState>(),
   };
 
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
-      TabItem.jobs: (_) => Center(child: Text("Jobs")),
-      TabItem.entries: (_) => Center(child: Text("Jobs")),
-      TabItem.account: (_) => Center(child: Text("Jobs")),
+      TabItem.home: (_) => HomeView(),
+      TabItem.history: (_) => Center(child: Text("History")),
     };
   }
 

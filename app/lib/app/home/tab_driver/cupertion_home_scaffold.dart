@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ootd/riverpod/home/tab_item.dart';
-import 'package:ootd/riverpod/constants/keys.dart';
-import 'package:ootd/riverpod/routing/cuptetino_tab_view_router.dart';
+import 'package:ootd/app/home/tab_driver/tab_item.dart';
+import 'package:ootd/app/constants/keys.dart';
+import 'package:ootd/app/routing/cuptetino_tab_view_router.dart';
 
 @immutable
 class CupertinoHomeScaffold extends StatelessWidget {
@@ -26,9 +26,8 @@ class CupertinoHomeScaffold extends StatelessWidget {
         key: const Key(Keys.tabBar),
         currentIndex: currentTab.index,
         items: [
-          _buildItem(TabItem.jobs),
-          _buildItem(TabItem.entries),
-          _buildItem(TabItem.account),
+          _buildItem(TabItem.history),
+          _buildItem(TabItem.home),
         ],
         onTap: (index) => onSelectTab(TabItem.values[index]),
         activeColor: Colors.indigo,

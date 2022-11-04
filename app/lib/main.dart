@@ -5,6 +5,7 @@ import 'package:ootd/app/top_level_providers.dart';
 import 'package:ootd/app/auth_widget.dart';
 import 'package:ootd/app/signin_page.dart';
 import 'package:ootd/app/routing/app_router.dart';
+import 'package:ootd/app/home/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,12 +26,7 @@ class MyApp extends ConsumerWidget {
         nonSignedInBuilder: (_) => Consumer(
           builder: (context, ref, _) => SignInPage(),
         ),
-        signedInBuilder: (_) => Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  firebaseAuth.signOut();
-                },
-                child: Text("Sign Out"))),
+        signedInBuilder: (_) => HomePage(),
       ),
       onGenerateRoute: (settings) =>
           AppRouter.onGenerateRoute(settings, firebaseAuth),
