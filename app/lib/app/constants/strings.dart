@@ -34,4 +34,6 @@ class Strings {
   static const String accountPage = 'Account Page';
 
   static const String outfitFactory = 'Add Outfit';
+
+  static String wardrobeManagerDesc = 'Wardrobe Manager';
 }

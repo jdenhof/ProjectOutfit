@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:ootd/app/services/firestore_services.dart';
 import 'package:ootd/app/top_level_providers.dart';
 
 class SignInPage extends ConsumerStatefulWidget {
@@ -31,11 +32,13 @@ class _SignInPageState extends ConsumerState<SignInPage> {
   }
 
   Future<void> createUserWithEmailAndPassword(FirebaseAuth auth) async {
+    final database = ref.watch(databaseProvider);
     try {
       await auth.createUserWithEmailAndPassword(
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
+      await database?.newUser(auth.currentUser!);
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message!;

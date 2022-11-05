@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ootd/app/services/firestore_services.dart';
 import 'package:ootd/app/services/firestore_path.dart';
 import 'package:ootd/app/models/wardrobe.dart';
@@ -13,11 +14,25 @@ abstract class Database {
   Future<void> deleteClothingItem(ClothingItem item);
 }
 
+extension on User {
+  Map<String, dynamic> toMap() {
+    return {
+      'uid': uid,
+      'email': email,
+    };
+  }
+}
+
 class FirestoreDatabase implements Database {
   FirestoreDatabase({required this.uid});
   final String uid;
 
   final FirestoreService _service = FirestoreService.instance;
+
+  Future<void> newUser(User user) => _service.setData(
+        path: FirestorePath.user(uid),
+        data: user.toMap(),
+      );
 
   @override
   Future<void> setWardrobe(Wardrobe wardrobe) => _service.setData(

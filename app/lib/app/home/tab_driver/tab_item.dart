@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ootd/app/constants/keys.dart';
 import 'package:ootd/app/constants/strings.dart';
 
-enum TabItem { history, factory, home }
+enum TabItem { history, home }
 
 class TabItemData {
   const TabItemData(
@@ -17,11 +17,6 @@ class TabItemData {
       key: Keys.historyTab,
       title: Strings.history,
       icon: Icons.history,
-    ),
-    TabItem.factory: TabItemData(
-      key: Keys.outfitFactoryTab,
-      title: Strings.outfitFactory,
-      icon: Icons.camera_alt_outlined,
     ),
     TabItem.home: TabItemData(
       key: Keys.homeTab,
