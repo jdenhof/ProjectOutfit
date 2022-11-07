@@ -3,15 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ootd/app/services/firestore_services.dart';
 import 'package:ootd/app/services/firestore_path.dart';
 import 'package:ootd/app/models/wardrobe.dart';
-import 'package:ootd/app/models/clothing_item.dart';
+import 'package:ootd/app/models/wardrobe_item.dart';
 
 abstract class Database {
   Future<void> setWardrobe(Wardrobe wardrobe);
   Future<void> deleteWardrobe(Wardrobe wardrobe);
-  Stream<Wardrobe> wardrobeStream(String wardrobeId);
   Stream<List<Wardrobe>> wardrobesStream();
-  Future<void> setClothingItem(String wardrobeId, ClothingItem item);
-  Future<void> deleteClothingItem(ClothingItem item);
+  Future<void> setWardrobeItem(WardrobeItem item);
+  Future<void> deleteWardrobeItem(WardrobeItem item);
+  Stream<List<WardrobeItem>> wardrobeItemsStream(Wardrobe wardrobe);
 }
 
 extension on User {
@@ -46,30 +46,30 @@ class FirestoreDatabase implements Database {
       );
 
   @override
-  Future<void> deleteClothingItem(ClothingItem item) => _service.deleteData(
-        path: FirestorePath.clothingItem(uid, item.wardrobeId, item.id),
-      );
-
-  @override
-  Future<void> setClothingItem(String wardrobeId, ClothingItem item) =>
-      _service.setData(
-        path: FirestorePath.clothingItem(uid, wardrobeId, item.id),
-        data: item.toMap(),
-      );
-
-  @override
-  Stream<Wardrobe> wardrobeStream(String wardrobeId) => _service.documentStream(
-        path: FirestorePath.wardrobe(uid, wardrobeId),
-        builder: (data, documentId) => Wardrobe.fromMap(data, documentId),
-      );
-
-  @override
   Stream<List<Wardrobe>> wardrobesStream() => _service.collectionStream(
         path: FirestorePath.wardrobes(uid),
         builder: (data, documentId) => Wardrobe.fromMap(data, documentId),
       );
 
-  currentWardrobe() {}
+  @override
+  Future<void> setWardrobeItem(WardrobeItem item) async {
+    _service.setData(
+      path: FirestorePath.wardrobeItem(uid, item.id, item.wardrobeId),
+      data: item.toMap(),
+    );
+  }
+
+  @override
+  Future<void> deleteWardrobeItem(WardrobeItem item) => _service.deleteData(
+      path: FirestorePath.wardrobeItem(uid, item.id, item.wardrobeId));
+
+  @override
+  Stream<List<WardrobeItem>> wardrobeItemsStream(Wardrobe? wardrobe) =>
+      _service.collectionStream(
+        path: FirestorePath.wardrobeItems(uid, wardrobe?.id ?? 'default'),
+        builder: (data, documentId) => WardrobeItem.fromMap(data, documentId),
+      );
+}
 
   /*
   Future<void> setJob(Job job) => _service.setData(
@@ -117,4 +117,3 @@ class FirestoreDatabase implements Database {
         sort: (lhs, rhs) => rhs.start.compareTo(lhs.start),
       );
       */
-}

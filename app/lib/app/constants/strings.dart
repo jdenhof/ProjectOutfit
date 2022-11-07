@@ -35,5 +35,15 @@ class Strings {
 
   static const String outfitFactory = 'Add Outfit';
 
+  // Wardrobe Manager
   static String wardrobeManagerDesc = 'Wardrobe Manager';
+
+  // Wardrobe builder page
+  static String wardrobeBuilderPage = 'Clothing Editor';
+
+  // Wardrobe item creator page
+  static String wardrobeItemCreatorPage = 'New Wardrobe Item';
+
+  // Wardrobe item not valid
+  static String wardrobeItemError = 'Missing inputs';
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ootd/app/constants/strings.dart';
 import 'package:ootd/app/top_level_providers.dart';
-import 'package:ootd/app/routing/app_router.dart';
+import 'package:ootd/app/wardrobe_manager/wardrobe_manager_page/wardrobe_manager_page.dart';
 
 // watch database
 class HomeView extends ConsumerStatefulWidget {
@@ -33,10 +33,6 @@ class _HomeViewState extends ConsumerState<HomeView> {
         ],
       ),
       body: _buildContents(authProvider, context, ref),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-      ),
     );
   }
 

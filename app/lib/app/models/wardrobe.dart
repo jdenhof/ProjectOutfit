@@ -21,11 +21,11 @@ class Wardrobe extends Equatable {
 
   factory Wardrobe.fromMap(Map<String, dynamic>? data, String documentId) {
     if (data == null) {
-      throw StateError('missing data for jobId: $documentId');
+      throw StateError('missing data for wardrobeId: $documentId');
     }
     final name = data['name'] as String?;
     if (name == null) {
-      throw StateError('missing name for jobId: $documentId');
+      throw StateError('missing name for wardrobeId: $documentId');
     }
     return Wardrobe(
       id: documentId,

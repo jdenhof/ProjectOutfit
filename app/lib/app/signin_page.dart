@@ -34,11 +34,16 @@ class _SignInPageState extends ConsumerState<SignInPage> {
   Future<void> createUserWithEmailAndPassword(FirebaseAuth auth) async {
     final database = ref.watch(databaseProvider);
     try {
-      await auth.createUserWithEmailAndPassword(
-        email: _controllerEmail.text,
-        password: _controllerPassword.text,
-      );
-      await database?.newUser(auth.currentUser!);
+      await auth
+          .createUserWithEmailAndPassword(
+            email: _controllerEmail.text,
+            password: _controllerPassword.text,
+          )
+          .then(
+            (value) => {
+              ref.read(databaseProvider)!.newUser(value.user!),
+            },
+          );
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message!;

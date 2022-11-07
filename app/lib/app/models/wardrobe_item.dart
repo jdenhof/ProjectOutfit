@@ -1,14 +1,19 @@
-import 'package:equatable/equatable.dart';
+import 'dart:io';
 
-class ClothingItem extends Equatable {
+import 'package:camera/camera.dart';
+import 'package:equatable/equatable.dart';
+import 'package:ootd/app/wardrobe_manager/wardrobe_builder/wardrobe_item_creator.dart';
+
+class WardrobeItem extends Equatable {
   //TODO~Implement tags and secondaryColors
-  const ClothingItem({
+  WardrobeItem({
     required this.id,
     required this.wardrobeId,
     required this.name,
     required this.category,
     required this.type,
-    required this.color,
+    required this.imagePath,
+    this.image,
   });
 
   final String id;
@@ -16,25 +21,26 @@ class ClothingItem extends Equatable {
   final String name;
   final String category;
   final String type;
-  final int color;
+  late XFile? image;
+  final String imagePath;
 
   @override
-  List<Object> get props => [id, wardrobeId, name, category, type];
+  List<Object> get props => [id, wardrobeId, name, category, type, imagePath];
 
   @override
   bool get stringify => true;
 
-  factory ClothingItem.fromMap(Map<dynamic, dynamic>? value, String id) {
+  factory WardrobeItem.fromMap(Map<dynamic, dynamic>? value, String id) {
     if (value == null) {
       throw StateError('missing data for entryId: $id');
     }
-    return ClothingItem(
+    return WardrobeItem(
       id: id,
       wardrobeId: value['wardrobeId'] as String,
       name: value['name'] as String,
       category: value['category'] as String,
       type: value['type'] as String,
-      color: value['color'] as int,
+      imagePath: value['imagePath'] as String,
     );
   }
 
@@ -44,7 +50,12 @@ class ClothingItem extends Equatable {
       'name': name,
       'category': category,
       'type': type,
-      'color': color,
+      'imagePath': imagePath,
     };
+  }
+
+  static WardrobeItem fromValidator(WardrobeItemValidator wardrobeItem) {
+    return WardrobeItem.fromMap(
+        wardrobeItem.toMap(), DateTime.now().microsecondsSinceEpoch.toString());
   }
 }
