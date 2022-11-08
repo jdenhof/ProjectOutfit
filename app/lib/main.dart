@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ootd/app/top_level_providers.dart';
-import 'package:ootd/app/auth_widget.dart';
-import 'package:ootd/app/signin_page.dart';
+import 'package:ootd/app/auth/auth_widget.dart';
+import 'package:ootd/app/auth/signin_page.dart';
 import 'package:ootd/app/routing/app_router.dart';
 import 'package:ootd/app/home/home_page.dart';
 

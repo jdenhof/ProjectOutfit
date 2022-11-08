@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ootd/app/auth_widget.dart';
+import 'package:ootd/app/auth/auth_widget.dart';
 
 //List - Item - Builder
 typedef ItemWidgetBuilder<T> = Widget Function(BuildContext context, T item);

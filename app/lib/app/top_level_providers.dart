@@ -66,6 +66,16 @@ class StorageDatabase {
       throw UnimplementedError();
     }
   }
+
+  Future<void> deleteWardrobeItem(WardrobeItem item) async {
+    final imageRef =
+        storageRef.child(FirestorePath.wardrobeImage(uid, item.imagePath));
+    try {
+      await imageRef.delete();
+    } on FirebaseException catch (e) {
+      throw UnimplementedError();
+    }
+  }
 }
 
 final databaseProvider = Provider.autoDispose<FirestoreDatabase?>((ref) {

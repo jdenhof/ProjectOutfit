@@ -46,4 +46,6 @@ class Strings {
 
   // Wardrobe item not valid
   static String wardrobeItemError = 'Missing inputs';
+
+  static String noImageFail = 'No image uploaded';
 }

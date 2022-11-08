@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ootd/app/constants/strings.dart';
 import 'package:ootd/app/top_level_providers.dart';
-import 'package:ootd/app/wardrobe_manager/wardrobe_manager_page/wardrobe_manager_page.dart';
+import 'package:ootd/app/wardrobe_manager/wardrobe_item_page/wardrobe_manager_page.dart';
 
 // watch database
 class HomeView extends ConsumerStatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_builder/wardrobe_builder_page.dart';
-import 'package:ootd/app/wardrobe_manager/wardrobe_builder/wardrobe_item_creator.dart';
+import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_creator.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_manager_page/wardrobe_manager_page.dart';
-import 'package:ootd/app/signin_page.dart';
+import 'package:ootd/app/auth/signin_page.dart';
 
 class AppRoutes {
   static const emailPasswordSignInPage = '/email-password-sign-in-page';
@@ -35,7 +35,7 @@ class AppRouter {
         );
       case AppRoutes.wardrobeItemCreatorPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => WardrobeItemCreatorPage(),
+          builder: (_) => WardrobeItemCreatorPage(null),
           settings: settings,
         );
       default:

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ootd/app/constants/strings.dart';
 import 'package:ootd/app/models/wardrobe_item.dart';
 import 'package:ootd/app/routing/app_router.dart';
-import 'package:ootd/app/wardrobe_manager/wardrobe_builder/wardrobe_item_creator.dart';
+import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_creator.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_manager_page/wardrobe_list_builder.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_manager_page/wardrobe_list_tile.dart';
 import 'package:ootd/app/top_level_providers.dart';
@@ -30,7 +30,9 @@ class _WardrobeManagerPage extends ConsumerState<WardrobeManagerPage> {
   Future<void> _delete(WardrobeItem item) async {
     try {
       final database = ref.read(databaseProvider)!;
+      final storage = ref.read(storageProvider)!;
       await database.deleteWardrobeItem(item);
+      await storage.deleteWardrobeItem(item);
     } catch (e) {
       //TODO~Pass error to user
       throw UnimplementedError();
@@ -64,6 +66,7 @@ class _WardrobeManagerPage extends ConsumerState<WardrobeManagerPage> {
         onDismissed: (direction) => _delete(item),
         child: WardrobeItemListTile(
           wardrobeItem: item,
+          //TODO~ Open editor page
           onTap: () => {},
         ),
       ),
