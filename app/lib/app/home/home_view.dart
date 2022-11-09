@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ootd/app/capture/camera_page.dart';
 import 'package:ootd/app/constants/strings.dart';
+import 'package:ootd/app/routing/app_router.dart';
 import 'package:ootd/app/top_level_providers.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_page/wardrobe_manager_page.dart';
 
@@ -39,6 +41,17 @@ class _HomeViewState extends ConsumerState<HomeView> {
   Widget _buildContents(
       FirebaseAuth auth, BuildContext context, WidgetRef ref) {
     //TODO~Start of home content view
-    return Center(child: Text(auth.currentUser?.email ?? ''));
+    return Center(
+      child: ElevatedButton(
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute<void>(
+              builder: (BuildContext context) => CameraScreen(),
+              settings: RouteSettings(
+                  name: AppRoutes.cameraScreen,
+                  arguments: CameraArguments(reciever: '', display: true))),
+        ),
+        child: Text("Add Outfit"),
+      ),
+    );
   }
 }

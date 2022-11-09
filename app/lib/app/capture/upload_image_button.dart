@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:ootd/app/capture/camera_page.dart';
+import 'package:ootd/app/routing/app_router.dart';
 
 typedef ImageCallback = void Function(XFile);
 
@@ -33,15 +34,12 @@ class _UploadPhotoState extends State<UploadPhoto> {
               ? ElevatedButton(
                   onPressed: () => Navigator.of(context)
                       .push(
-                    MaterialPageRoute(
-                      builder: (context) => const CameraScreen(
-                        display: false,
-                        reciever: '',
-                      ),
+                    MaterialPageRoute<XFile>(
+                      builder: (BuildContext context) => CameraScreen(),
                     ),
                   )
                       .then((value) {
-                    widget.imageCallback(value);
+                    widget.imageCallback(value!);
                     setState(() {
                       image = value;
                     });

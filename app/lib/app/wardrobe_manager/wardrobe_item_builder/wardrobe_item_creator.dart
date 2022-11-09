@@ -11,13 +11,6 @@ import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_in
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_validator.dart';
 
 class WardrobeItemCreatorPage extends ConsumerStatefulWidget {
-  WardrobeItemCreatorPage(
-    this.initializer, {
-    super.key,
-  });
-
-  WardrobeItem? initializer;
-
   static Future<void> show(BuildContext context) async {
     await Navigator.of(context, rootNavigator: true)
         .pushNamed(AppRoutes.wardrobeItemCreatorPage);
@@ -75,11 +68,6 @@ class _WardrobeItemCreatorPage extends ConsumerState<WardrobeItemCreatorPage> {
   void initState() {
     super.initState();
 
-    if (widget.initializer != null) {
-      wardrobeItem.category = widget.initializer!.category;
-      wardrobeItem.name = widget.initializer!.name;
-      wardrobeItem.brand = widget.initializer!.brand;
-    }
     // Start listening to changes.
     nameController.addListener(
       () => setState(() {

@@ -4,8 +4,8 @@ import 'package:ootd/app/constants/strings.dart';
 import 'package:ootd/app/models/wardrobe_item.dart';
 import 'package:ootd/app/routing/app_router.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_creator.dart';
-import 'package:ootd/app/wardrobe_manager/wardrobe_manager_page/wardrobe_list_builder.dart';
-import 'package:ootd/app/wardrobe_manager/wardrobe_manager_page/wardrobe_list_tile.dart';
+import 'package:ootd/app/wardrobe_manager/wardrobe_item_page/wardrobe_list_builder.dart';
+import 'package:ootd/app/wardrobe_manager/wardrobe_item_page/wardrobe_list_tile.dart';
 import 'package:ootd/app/top_level_providers.dart';
 
 final wardrobeItemsStreamProvider =

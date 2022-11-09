@@ -1,16 +1,20 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:ootd/app/capture/display_page.dart';
+import 'package:ootd/app/routing/app_router.dart';
 import 'package:ootd/main.dart';
 
-class CameraScreen extends StatefulWidget {
-  const CameraScreen({
-    super.key,
-    required this.reciever,
-    required this.display,
-  });
-
+class CameraArguments {
   final String reciever;
   final bool display;
+
+  CameraArguments({required this.reciever, required this.display});
+}
+
+class CameraScreen extends StatefulWidget {
+  CameraScreen({
+    super.key,
+  });
 
   @override
   State<CameraScreen> createState() => _CameraScreenState();
@@ -31,14 +35,15 @@ class _CameraScreenState extends State<CameraScreen>
     _initializeControllerFuture = _controller.initialize();
   }
 
-  void takePicture() async {
+  void takePicture(CameraArguments args) async {
     try {
       await _initializeControllerFuture;
 
       final image = await _controller.takePicture();
 
       if (!mounted) return;
-      if (widget.display) {
+      if (args.display) {
+        CameraDisplay.show(context, image);
       } else {
         Navigator.pop(context, image);
       }
@@ -74,6 +79,7 @@ class _CameraScreenState extends State<CameraScreen>
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as CameraArguments;
     return Scaffold(
       appBar: AppBar(),
       body: FutureBuilder<void>(
@@ -91,7 +97,7 @@ class _CameraScreenState extends State<CameraScreen>
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           flipCameraActionButton(),
-          takePictureActionButton(),
+          takePictureActionButton(args),
         ],
       ),
     );
@@ -119,12 +125,12 @@ class _CameraScreenState extends State<CameraScreen>
     );
   }
 
-  Expanded takePictureActionButton() {
+  Expanded takePictureActionButton(CameraArguments args) {
     return Expanded(
       flex: 1,
       child: FloatingActionButton(
         heroTag: 'TakePicture',
-        onPressed: takePicture,
+        onPressed: () => takePicture(args),
         child: const Icon(
           Icons.camera_alt_outlined,
           color: Colors.white,

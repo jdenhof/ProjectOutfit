@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ootd/app/capture/camera_page.dart';
+import 'package:ootd/app/capture/display_page.dart';
+import 'package:ootd/app/outfit_builder/outfit_builder_page.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_builder/wardrobe_builder_page.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_creator.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_page/wardrobe_manager_page.dart';
@@ -10,6 +13,9 @@ class AppRoutes {
   static const wardrobeManagerPage = '/wardrobe-manager-page';
   static const wardrobeBuilderPage = '/wardrobe-builder-page';
   static const wardrobeItemCreatorPage = '/wardrobe-item-creator-page';
+  static const outfitBuilderPage = '/outfit-builder-page';
+  static const cameraDisplay = '/camera-display-page';
+  static const cameraScreen = '/camera-screen-page';
 }
 
 class AppRouter {
@@ -35,7 +41,22 @@ class AppRouter {
         );
       case AppRoutes.wardrobeItemCreatorPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => WardrobeItemCreatorPage(null),
+          builder: (_) => WardrobeItemCreatorPage(),
+          settings: settings,
+        );
+      case AppRoutes.outfitBuilderPage:
+        return MaterialPageRoute(
+          builder: (_) => const OutfitBuilderPage(),
+          settings: settings,
+        );
+      case AppRoutes.cameraDisplay:
+        return MaterialPageRoute(
+          builder: (_) => CameraDisplay(),
+          settings: settings,
+        );
+      case AppRoutes.cameraScreen:
+        return MaterialPageRoute(
+          builder: (_) => CameraScreen(),
           settings: settings,
         );
       default:
