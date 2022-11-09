@@ -16,6 +16,12 @@ class CameraScreen extends StatefulWidget {
     super.key,
   });
 
+  static Future<void> show(
+      BuildContext context, CameraArguments arguments) async {
+    await Navigator.of(context, rootNavigator: true)
+        .pushNamed(AppRoutes.cameraScreen, arguments: arguments);
+  }
+
   @override
   State<CameraScreen> createState() => _CameraScreenState();
 }
@@ -43,7 +49,7 @@ class _CameraScreenState extends State<CameraScreen>
 
       if (!mounted) return;
       if (args.display) {
-        CameraDisplay.show(context, image);
+        CameraDisplay.show(context, image, args);
       } else {
         Navigator.pop(context, image);
       }

@@ -43,13 +43,10 @@ class _HomeViewState extends ConsumerState<HomeView> {
     //TODO~Start of home content view
     return Center(
       child: ElevatedButton(
-        onPressed: () => Navigator.of(context).push(
-          MaterialPageRoute<void>(
-              builder: (BuildContext context) => CameraScreen(),
-              settings: RouteSettings(
-                  name: AppRoutes.cameraScreen,
-                  arguments: CameraArguments(reciever: '', display: true))),
-        ),
+        onPressed: () => CameraScreen.show(
+            context,
+            CameraArguments(
+                reciever: AppRoutes.outfitBuilderPage, display: true)),
         child: Text("Add Outfit"),
       ),
     );

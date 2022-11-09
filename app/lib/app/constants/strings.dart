@@ -48,4 +48,7 @@ class Strings {
   static String wardrobeItemError = 'Missing inputs';
 
   static String noImageFail = 'No image uploaded';
+
+  // Outfit display title
+  static String outfitDisplayPage = "Verify Outfit";
 }

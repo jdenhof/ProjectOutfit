@@ -36,6 +36,9 @@ class _UploadPhotoState extends State<UploadPhoto> {
                       .push(
                     MaterialPageRoute<XFile>(
                       builder: (BuildContext context) => CameraScreen(),
+                      settings: RouteSettings(
+                          arguments:
+                              CameraArguments(display: false, reciever: '')),
                     ),
                   )
                       .then((value) {
