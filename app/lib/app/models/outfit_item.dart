@@ -35,7 +35,7 @@ class OutfitItem extends Equatable {
       name: value['name'] as String,
       category: value['category'] as String,
       tags: value['tags'] as String,
-      items: value['items'] as List<String>,
+      items: (value['items'] as List).map((item) => item as String).toList(),
       imagePath: value['imagePath'] as String,
     );
 
@@ -47,8 +47,8 @@ class OutfitItem extends Equatable {
       'name': name,
       'category': category,
       'tags': tags,
-      'imagePath': imagePath,
       'items': items,
+      'imagePath': imagePath,
     };
   }
 
