@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:ootd/app/services/firestore_services.dart';
 import 'package:ootd/app/top_level_providers.dart';
 
 class SignInPage extends ConsumerStatefulWidget {
+  const SignInPage({super.key});
+
   @override
   ConsumerState<SignInPage> createState() => _SignInPageState();
 }
@@ -32,7 +33,6 @@ class _SignInPageState extends ConsumerState<SignInPage> {
   }
 
   Future<void> createUserWithEmailAndPassword(FirebaseAuth auth) async {
-    final database = ref.watch(databaseProvider);
     try {
       await auth
           .createUserWithEmailAndPassword(

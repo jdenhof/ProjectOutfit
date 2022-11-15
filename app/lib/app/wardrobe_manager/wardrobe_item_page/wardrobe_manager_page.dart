@@ -34,7 +34,7 @@ class _WardrobeManagerPage extends ConsumerState<WardrobeManagerPage> {
       await database.deleteWardrobeItem(item);
       await storage.deleteWardrobeItem(item);
     } catch (e) {
-      //TODO~Pass error to user
+      // TODO: Pass error to user
       throw UnimplementedError();
     }
   }
@@ -43,10 +43,10 @@ class _WardrobeManagerPage extends ConsumerState<WardrobeManagerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Strings.wardrobeManagerDesc),
+        title: const Text(Strings.wardrobeManagerDesc),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () => WardrobeItemCreatorPage.show(context),
           )
         ],
@@ -66,7 +66,7 @@ class _WardrobeManagerPage extends ConsumerState<WardrobeManagerPage> {
         onDismissed: (direction) => _delete(item),
         child: WardrobeItemListTile(
           wardrobeItem: item,
-          //TODO~ Open editor page
+          //TODO: Open editor page
           onTap: () => {},
         ),
       ),

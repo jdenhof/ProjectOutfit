@@ -29,7 +29,7 @@ class WardrobeItemValidator {
       if (index == 0) {
         tmp += tag;
       } else {
-        tmp += ', ' + tag;
+        tmp += ', $tag';
       }
       index++;
     }
@@ -56,7 +56,8 @@ class WardrobeItemValidator {
   /// name - auto generated if none supplied
   /// category
   /// type
-  //TODO ~ Pass invalid reasons to user
+  ///
+  // TODO: Pass invalid reasons to user
   static bool validator(WardrobeItemValidator item) {
     if (item.category == null || item.type == 'none') {
       return false;

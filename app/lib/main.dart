@@ -18,6 +18,7 @@ Future<void> main() async {
   ));
 }
 
+// ignore: use_key_in_widget_constructors
 class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,9 +28,9 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       home: AuthWidget(
         nonSignedInBuilder: (_) => Consumer(
-          builder: (context, ref, _) => SignInPage(),
+          builder: (context, ref, _) => const SignInPage(),
         ),
-        signedInBuilder: (_) => HomePage(),
+        signedInBuilder: (_) => const HomePage(),
       ),
       onGenerateRoute: (settings) =>
           AppRouter.onGenerateRoute(settings, firebaseAuth),

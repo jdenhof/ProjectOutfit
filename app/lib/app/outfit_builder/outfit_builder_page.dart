@@ -1,18 +1,12 @@
-import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ootd/app/constants/strings.dart';
 import 'package:ootd/app/models/outfit_item.dart';
 import 'package:ootd/app/models/wardrobe_item.dart';
 import 'package:ootd/app/routing/app_router.dart';
-import 'package:ootd/app/services/firestore_path.dart';
 import 'package:ootd/app/top_level_providers.dart';
-import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_info_builder.dart';
-import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_validator.dart';
 
 class OutfitBuilderPage extends ConsumerStatefulWidget {
   const OutfitBuilderPage({super.key});
@@ -27,14 +21,16 @@ class OutfitBuilderPage extends ConsumerStatefulWidget {
 }
 
 class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
-  final _wardrobeItemId = [];
+  final List<String> _wardrobeItemId = [];
 
   void _wardrobeItemIdChange(String uid) {
-    if (_wardrobeItemId.contains(uid)) {
-      _wardrobeItemId.remove(uid);
-    } else {
-      _wardrobeItemId.add(uid);
-    }
+    setState(() {
+      if (_wardrobeItemId.contains(uid)) {
+        _wardrobeItemId.remove(uid);
+      } else {
+        _wardrobeItemId.add(uid);
+      }
+    });
   }
 
   @override
@@ -45,7 +41,7 @@ class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
     final storage = ref.watch(storageProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Outfit builder page"),
+        title: const Text("Outfit builder page"),
       ),
       body: _buildContents(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -58,8 +54,8 @@ class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
               name: '',
               category: '',
               tags: '',
-              imagePath: FirestorePath.outfitImage(
-                  database.uid, args.image.path.split('/').last),
+              items: _wardrobeItemId,
+              imagePath: args.image.path.split('/').last,
             ),
           );
           Navigator.of(context)
@@ -67,7 +63,7 @@ class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
             ..pop();
         },
         backgroundColor: Colors.green,
-        child: Icon(Icons.check),
+        child: const Icon(Icons.check),
       ),
     );
   }
@@ -97,20 +93,20 @@ class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
           (BuildContext context, AsyncSnapshot<List<WardrobeItem>> snapshot) {
         List<Widget> children;
         if (snapshot.hasError) {
-          children = [Container(height: 100.0, child: Icon(Icons.error))];
+          children = [const SizedBox(height: 100.0, child: Icon(Icons.error))];
         } else if (snapshot.hasData) {
           children = [
             Container(
               height: 150.0,
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(category,
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
                   ),
-                  Container(
+                  SizedBox(
                     height: 100.0,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
@@ -129,9 +125,9 @@ class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
                                     selectedCallback: _wardrobeItemIdChange,
                                   );
                                 } else if (snapshot.hasError) {
-                                  return Text("Error");
+                                  return const Text("Error");
                                 } else {
-                                  return CircularProgressIndicator();
+                                  return const CircularProgressIndicator();
                                 }
                               },
                             ),
@@ -145,7 +141,7 @@ class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
           ];
         } else {
           children = [
-            Container(height: 100.0, child: CircularProgressIndicator())
+            const SizedBox(height: 100.0, child: CircularProgressIndicator())
           ];
         }
         return Column(children: children);

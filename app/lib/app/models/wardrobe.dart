@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
-@immutable
 class Wardrobe extends Equatable {
   const Wardrobe({
     required this.id,

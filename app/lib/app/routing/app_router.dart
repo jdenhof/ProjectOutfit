@@ -21,27 +21,26 @@ class AppRoutes {
 class AppRouter {
   static Route<dynamic>? onGenerateRoute(
       RouteSettings settings, FirebaseAuth firebaseAuth) {
-    final args = settings.arguments;
     switch (settings.name) {
       case AppRoutes.emailPasswordSignInPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => SignInPage(),
+          builder: (_) => const SignInPage(),
           settings: settings,
           fullscreenDialog: true,
         );
       case AppRoutes.wardrobeManagerPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => WardrobeManagerPage(),
+          builder: (_) => const WardrobeManagerPage(),
           settings: settings,
         );
       case AppRoutes.wardrobeBuilderPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => WardrobeBuilderPage(),
+          builder: (_) => const WardrobeBuilderPage(),
           settings: settings,
         );
       case AppRoutes.wardrobeItemCreatorPage:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => WardrobeItemCreatorPage(),
+          builder: (_) => const WardrobeItemCreatorPage(),
           settings: settings,
         );
       case AppRoutes.outfitBuilderPage:
@@ -51,12 +50,12 @@ class AppRouter {
         );
       case AppRoutes.cameraDisplay:
         return MaterialPageRoute(
-          builder: (_) => CameraDisplay(),
+          builder: (_) => const CameraDisplay(),
           settings: settings,
         );
       case AppRoutes.cameraScreen:
         return MaterialPageRoute(
-          builder: (_) => CameraScreen(),
+          builder: (_) => const CameraScreen(),
           settings: settings,
         );
       default:

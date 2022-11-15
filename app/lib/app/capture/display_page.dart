@@ -38,7 +38,7 @@ class _CameraDisplay extends ConsumerState<CameraDisplay> {
     final image = args.image;
     return Scaffold(
       appBar: AppBar(
-        title: Text(Strings.outfitDisplayPage),
+        title: const Text(Strings.outfitDisplayPage),
       ),
       body: Image.file(File(image.path)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

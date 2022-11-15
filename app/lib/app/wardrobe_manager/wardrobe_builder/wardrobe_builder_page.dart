@@ -21,7 +21,7 @@ class _WardrobeBuilderPage extends ConsumerState<WardrobeBuilderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Strings.wardrobeBuilderPage),
+        title: const Text(Strings.wardrobeBuilderPage),
       ),
     );
   }

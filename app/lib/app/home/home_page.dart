@@ -5,8 +5,10 @@ import 'package:ootd/app/home/tab_driver/cupertion_home_scaffold.dart';
 import 'package:ootd/app/home/tab_driver/tab_item.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -19,8 +21,8 @@ class _HomePageState extends State<HomePage> {
 
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
-      TabItem.history: (_) => HistoryPage(),
-      TabItem.home: (_) => HomeView(),
+      TabItem.history: (_) => const HistoryPage(),
+      TabItem.home: (_) => const HomeView(),
     };
   }
 

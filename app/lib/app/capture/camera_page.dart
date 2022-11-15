@@ -12,7 +12,7 @@ class CameraArguments {
 }
 
 class CameraScreen extends StatefulWidget {
-  CameraScreen({
+  const CameraScreen({
     super.key,
   });
 

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ootd/app/models/outfit_item.dart';
 import 'package:ootd/app/services/firestore_services.dart';

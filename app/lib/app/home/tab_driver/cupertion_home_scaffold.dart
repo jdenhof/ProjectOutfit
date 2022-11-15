@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ootd/app/home/tab_driver/tab_item.dart';
 import 'package:ootd/app/constants/keys.dart';
-import 'package:ootd/app/routing/cuptetino_tab_view_router.dart';
 
 @immutable
 class CupertinoHomeScaffold extends StatelessWidget {
@@ -37,7 +36,6 @@ class CupertinoHomeScaffold extends StatelessWidget {
         return CupertinoTabView(
           navigatorKey: navigatorKeys[item],
           builder: (context) => widgetBuilders[item]!(context),
-          onGenerateRoute: CupertinoTabViewRouter.generateRoute,
         );
       },
     );

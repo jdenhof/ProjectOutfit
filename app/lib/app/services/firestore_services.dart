@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ootd/app/services/firestore_path.dart';
 
 class FirestoreService {
   FirestoreService._();

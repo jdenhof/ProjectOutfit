@@ -9,6 +9,8 @@ import 'package:ootd/app/wardrobe_manager/wardrobe_item_page/wardrobe_manager_pa
 
 // watch database
 class HomeView extends ConsumerStatefulWidget {
+  const HomeView({super.key});
+
   @override
   ConsumerState<HomeView> createState() => _HomeViewState();
 }
@@ -23,14 +25,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.logout_outlined),
-            selectedIcon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout_outlined),
+            selectedIcon: const Icon(Icons.logout),
             onPressed: () => authProvider.signOut(),
           ),
           IconButton(
             icon: const Icon(Icons.checkroom_outlined, color: Colors.white),
             onPressed: () => WardrobeManagerPage.show(context),
-            selectedIcon: Icon(Icons.checkroom),
+            selectedIcon: const Icon(Icons.checkroom),
           ),
         ],
       ),
@@ -40,14 +42,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   Widget _buildContents(
       FirebaseAuth auth, BuildContext context, WidgetRef ref) {
-    //TODO~Start of home content view
+    // TODO: Start of home content view
     return Center(
       child: ElevatedButton(
         onPressed: () => CameraScreen.show(
             context,
             CameraArguments(
                 reciever: AppRoutes.outfitBuilderPage, display: true)),
-        child: Text("Add Outfit"),
+        child: const Text("Add Outfit"),
       ),
     );
   }

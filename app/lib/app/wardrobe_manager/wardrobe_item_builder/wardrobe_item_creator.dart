@@ -11,6 +11,8 @@ import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_in
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_validator.dart';
 
 class WardrobeItemCreatorPage extends ConsumerStatefulWidget {
+  const WardrobeItemCreatorPage({super.key});
+
   static Future<void> show(BuildContext context) async {
     await Navigator.of(context, rootNavigator: true)
         .pushNamed(AppRoutes.wardrobeItemCreatorPage);
@@ -95,7 +97,7 @@ class _WardrobeItemCreatorPage extends ConsumerState<WardrobeItemCreatorPage> {
     final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
       appBar: AppBar(
-        title: Text(Strings.wardrobeItemCreatorPage),
+        title: const Text(Strings.wardrobeItemCreatorPage),
       ),
       body: _buildContents(context, ref),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -121,7 +123,7 @@ class _WardrobeItemCreatorPage extends ConsumerState<WardrobeItemCreatorPage> {
         // Error display
         Center(
           child: Container(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Text(error),
           ),
         ),

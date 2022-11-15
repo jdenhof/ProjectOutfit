@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,9 +23,9 @@ class WardrobeItemListTile extends ConsumerWidget {
           if (snapshot.hasData) {
             return Image(image: MemoryImage(snapshot.data!));
           } else if (snapshot.hasError) {
-            return Text("Error");
+            return const Text("Error");
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         },
       ),

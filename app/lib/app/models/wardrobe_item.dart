@@ -1,12 +1,10 @@
-import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_creator.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_validator.dart';
 
+// ignore: must_be_immutable
 class WardrobeItem extends Equatable {
-  //TODO~Implement tags and secondaryColors
+  // TODO: Implement tags and secondaryColors
   WardrobeItem({
     required this.id,
     required this.wardrobeId,
@@ -19,6 +17,8 @@ class WardrobeItem extends Equatable {
     this.image,
   });
 
+  late XFile? image;
+
   final String id;
   final String wardrobeId;
   final String name;
@@ -27,8 +27,6 @@ class WardrobeItem extends Equatable {
   final String type;
   final String tags;
   final String imagePath;
-
-  late XFile? image;
 
   @override
   List<Object> get props =>
