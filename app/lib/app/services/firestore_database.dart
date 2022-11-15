@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ootd/app/models/outfit_item.dart';
 import 'package:ootd/app/services/firestore_services.dart';
 import 'package:ootd/app/services/firestore_path.dart';
 import 'package:ootd/app/models/wardrobe.dart';
@@ -69,6 +71,24 @@ class FirestoreDatabase implements Database {
         path: FirestorePath.wardrobeItems(uid, wardrobe?.id ?? 'default'),
         builder: (data, documentId) => WardrobeItem.fromMap(data, documentId),
       );
+
+  Stream<List<WardrobeItem>> wardrobeItemsStreamFromCategory(String category) =>
+      _service.collectionStream(
+          path: FirestorePath.wardrobeItems(uid, 'default'),
+          builder: (data, documentId) => WardrobeItem.fromMap(data, documentId),
+          queryBuilder: (query) =>
+              query.where('category', isEqualTo: category));
+
+  Future<void> setOutfit(OutfitItem outfit) => _service.setData(
+        path: FirestorePath.outfit(uid, outfit.id),
+        data: outfit.toMap(),
+      );
+
+  Stream<List<OutfitItem>> outfitItemsStream() => _service.collectionStream(
+      path: FirestorePath.outfits(uid),
+      builder: (data, documentId) {
+        return OutfitItem.fromMap(data, documentId);
+      });
 }
 
   /*

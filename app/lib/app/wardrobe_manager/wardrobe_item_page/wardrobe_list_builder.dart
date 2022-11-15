@@ -21,7 +21,6 @@ class WardrobeListItemsBuilder<T> extends StatelessWidget {
           items.isNotEmpty ? _buildList(items) : const EmptyContent(),
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (_, e) {
-        print(e);
         return EmptyContent(title: 'Something went wrong', message: '');
       },
     );

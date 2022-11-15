@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ootd/app/constants/strings.dart';
+import 'package:ootd/app/models/outfit_item.dart';
 import 'package:ootd/app/models/wardrobe_item.dart';
 import 'package:ootd/app/services/firestore_database.dart';
 import 'package:ootd/app/services/firestore_path.dart';
@@ -73,6 +74,29 @@ class StorageDatabase {
     try {
       await imageRef.delete();
     } on FirebaseException catch (e) {
+      throw UnimplementedError();
+    }
+  }
+
+  Future<void> setOutfitImage(XFile image) async {
+    final newImageRef = storageRef
+        .child(FirestorePath.outfitImage(uid, image.path.split('/').last));
+
+    try {
+      await newImageRef.putFile(File(image.path));
+    } on FirebaseException catch (e) {
+      throw UnimplementedError();
+    }
+  }
+
+  Future<Uint8List?> getOutfitItemImage(OutfitItem item) async {
+    try {
+      const fourMegabyte = 3 * 1024 * 1024;
+      return await storageRef
+          .child(FirestorePath.outfitImage(uid, item.imagePath))
+          .getData(fourMegabyte);
+    } on FirebaseException catch (e) {
+      // Handle any errors.
       throw UnimplementedError();
     }
   }

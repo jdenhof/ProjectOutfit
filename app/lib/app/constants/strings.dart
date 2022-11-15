@@ -36,19 +36,22 @@ class Strings {
   static const String outfitFactory = 'Add Outfit';
 
   // Wardrobe Manager
-  static String wardrobeManagerDesc = 'Wardrobe Manager';
+  static const String wardrobeManagerDesc = 'Wardrobe Manager';
 
   // Wardrobe builder page
-  static String wardrobeBuilderPage = 'Clothing Editor';
+  static const String wardrobeBuilderPage = 'Clothing Editor';
 
   // Wardrobe item creator page
-  static String wardrobeItemCreatorPage = 'New Wardrobe Item';
+  static const String wardrobeItemCreatorPage = 'New Wardrobe Item';
 
   // Wardrobe item not valid
-  static String wardrobeItemError = 'Missing inputs';
+  static const String wardrobeItemError = 'Missing inputs';
 
-  static String noImageFail = 'No image uploaded';
+  static const String noImageFail = 'No image uploaded';
 
   // Outfit display title
-  static String outfitDisplayPage = "Verify Outfit";
+  static const String outfitDisplayPage = "Verify Outfit";
+
+  // History page title
+  static const String historyPage = 'History';
 }

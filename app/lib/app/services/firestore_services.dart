@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ootd/app/services/firestore_path.dart';
 
 class FirestoreService {
   FirestoreService._();
@@ -10,13 +11,11 @@ class FirestoreService {
     bool merge = false,
   }) async {
     final reference = FirebaseFirestore.instance.doc(path);
-    print('$path: $data');
     await reference.set(data, SetOptions(merge: merge));
   }
 
   Future<void> deleteData({required String path}) async {
     final reference = FirebaseFirestore.instance.doc(path);
-    print('delete: $path');
     await reference.delete();
   }
 

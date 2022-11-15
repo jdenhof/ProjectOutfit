@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ootd/app/history/history_page.dart';
 import 'package:ootd/app/home/home_view.dart';
 import 'package:ootd/app/home/tab_driver/cupertion_home_scaffold.dart';
 import 'package:ootd/app/home/tab_driver/tab_item.dart';
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   Map<TabItem, WidgetBuilder> get widgetBuilders {
     return {
-      TabItem.history: (_) => Center(child: Text("History")),
+      TabItem.history: (_) => HistoryPage(),
       TabItem.home: (_) => HomeView(),
     };
   }

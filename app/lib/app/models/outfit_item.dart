@@ -5,69 +5,58 @@ import 'package:equatable/equatable.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_creator.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_builder/wardrobe_item_validator.dart';
 
-class WardrobeItem extends Equatable {
+class OutfitItem extends Equatable {
   //TODO~Implement tags and secondaryColors
-  WardrobeItem({
+  OutfitItem({
     required this.id,
-    required this.wardrobeId,
     required this.name,
-    required this.brand,
     required this.category,
-    required this.type,
     required this.tags,
     required this.imagePath,
     this.image,
   });
 
   final String id;
-  final String wardrobeId;
   final String name;
-  final String brand;
   final String category;
-  final String type;
   final String tags;
   final String imagePath;
 
   late XFile? image;
 
   @override
-  List<Object> get props =>
-      [id, wardrobeId, name, brand, category, type, tags, imagePath];
+  List<Object> get props => [id, name, category, tags, imagePath];
 
   @override
   bool get stringify => true;
 
-  factory WardrobeItem.fromMap(Map<dynamic, dynamic>? value, String id) {
+  factory OutfitItem.fromMap(Map<dynamic, dynamic>? value, String id) {
     if (value == null) {
       throw StateError('missing data for entryId: $id');
     }
-    WardrobeItem item = WardrobeItem(
+
+    OutfitItem item = OutfitItem(
       id: id,
-      wardrobeId: value['wardrobeId'] as String,
       name: value['name'] as String,
-      brand: value['brand'] as String,
       category: value['category'] as String,
-      type: value['type'] as String,
       tags: value['tags'] as String,
       imagePath: value['imagePath'] as String,
     );
+
     return item;
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'wardrobeId': wardrobeId,
       'name': name,
-      'brand': brand,
       'category': category,
-      'type': type,
       'tags': tags,
       'imagePath': imagePath,
     };
   }
 
-  static WardrobeItem fromValidator(WardrobeItemValidator wardrobeItem) {
-    return WardrobeItem.fromMap(
+  static OutfitItem fromValidator(WardrobeItemValidator wardrobeItem) {
+    return OutfitItem.fromMap(
         wardrobeItem.toMap(), DateTime.now().microsecondsSinceEpoch.toString());
   }
 }

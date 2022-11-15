@@ -29,7 +29,7 @@ class FirestorePath {
 
   // Path to outfit within outfits
   static String outfit(String uid, outfitId) =>
-      '$_users/$uid/$outfits/$outfitId';
+      '$_users/$uid/$_outfits/$outfitId';
 
   // Image reference wadrobe items paths for storage
   static String wardrobeImage(String uid, String imagepath) =>
@@ -40,5 +40,5 @@ class FirestorePath {
 
   // Image refernce outfit paths for storage
   static String outfitImage(String uid, String imagepath) =>
-      'images/$uid/outfits/$imagepath';
+      'images/$uid/$_outfits/$imagepath';
 }
