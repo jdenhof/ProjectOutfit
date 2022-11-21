@@ -17,7 +17,7 @@ class _HomeTabState extends State<HomeTab> {
     return Center(
       child: Column(children: const [
         DateDisplay(),
-        //WeatherDisplay(),
+        WeatherDisplay(),
       ]),
     );
   }
