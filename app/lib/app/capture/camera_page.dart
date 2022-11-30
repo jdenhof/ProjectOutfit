@@ -34,7 +34,7 @@ class _CameraScreenState extends State<CameraScreen>
 
   void initCamera() {
     _controller = CameraController(
-      cameras![rearCameraSelected ? 0 : 1],
+      cameras![rearCameraSelected ? 1 : 0],
       ResolutionPreset.ultraHigh,
     );
 

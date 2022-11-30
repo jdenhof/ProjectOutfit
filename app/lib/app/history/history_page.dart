@@ -14,16 +14,20 @@ class HistoryPage extends ConsumerStatefulWidget {
 }
 
 class _HistoryPageState extends ConsumerState<HistoryPage> {
-  Widget _outfitPreview(OutfitItem item) {
+  Widget _outfitPreview(OutfitItem outfit) {
     final storage = ref.watch(storageProvider);
-    final image = storage!.getOutfitItemImage(item);
-    return SizedBox(
-      height: 150.0,
-      child: Row(
-        children: [
-          FutureBuilder(
-            future: image,
+    final outfitImage = storage!.getOutfitItemImage(outfit);
+    return Row(
+      children: [
+        SizedBox(
+          height: 100.0,
+          width: 100.0,
+          child: FutureBuilder(
+            future: outfitImage,
             builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Text("reload");
+              }
               switch (snapshot.connectionState) {
                 case ConnectionState.none:
                   return const CircularProgressIndicator();
@@ -33,19 +37,52 @@ class _HistoryPageState extends ConsumerState<HistoryPage> {
                   return const CircularProgressIndicator();
                 case ConnectionState.done:
                   return Image(
+                    height: 100.0,
+                    width: 100.0,
                     image: MemoryImage(snapshot.data!),
                   );
               }
             },
           ),
-          Center(
-              child: Column(
-            children: [
-              Text("Name: ${item.name}"),
-              Text("Category: ${item.category}"),
-            ],
-          ))
-        ],
+        ),
+        ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: outfit.items.length,
+          itemBuilder: (BuildContext context, int index) =>
+              _itemImage(outfit.items[index], ref),
+        ),
+      ],
+    );
+  }
+
+  Widget _itemImage(String imagePath, WidgetRef ref) {
+    final storage = ref.watch(storageProvider)!;
+    final itemImage = storage.getWardrobeItemImage(imagePath);
+    return SizedBox(
+      height: 100.0,
+      width: 100.0,
+      child: FutureBuilder(
+        future: itemImage,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text("reload");
+          }
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return const CircularProgressIndicator();
+            case ConnectionState.waiting:
+              return const CircularProgressIndicator();
+            case ConnectionState.active:
+              return const CircularProgressIndicator();
+            case ConnectionState.done:
+              return Image(
+                height: 100.0,
+                width: 100.0,
+                image: MemoryImage(snapshot.data!),
+              );
+          }
+        },
       ),
     );
   }
@@ -80,6 +117,9 @@ class _HistoryPageState extends ConsumerState<HistoryPage> {
       builder:
           (BuildContext context, AsyncSnapshot<List<OutfitItem>> snapshot) {
         List<Widget> children;
+        if (snapshot.hasError) {
+          throw snapshot.error!;
+        }
         switch (snapshot.connectionState) {
           case ConnectionState.none:
             children = [];
@@ -88,7 +128,9 @@ class _HistoryPageState extends ConsumerState<HistoryPage> {
             children = [const CircularProgressIndicator()];
             break;
           case ConnectionState.active:
-            children = _outfitPreviewFromOutfits(snapshot.data!);
+            children = snapshot.hasData
+                ? _outfitPreviewFromOutfits(snapshot.data!)
+                : [const LinearProgressIndicator()];
             break;
           case ConnectionState.done:
             children = _outfitPreviewFromOutfits(snapshot.data!);
@@ -96,6 +138,7 @@ class _HistoryPageState extends ConsumerState<HistoryPage> {
         }
 
         return ListView(
+          scrollDirection: Axis.vertical,
           children: children,
         );
       },

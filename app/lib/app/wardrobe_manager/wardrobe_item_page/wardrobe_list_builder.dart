@@ -29,6 +29,7 @@ class WardrobeListItemsBuilder<T> extends StatelessWidget {
   Widget _buildList(List<T> items) {
     return ListView.separated(
       itemCount: items.length + 2,
+      addAutomaticKeepAlives: true,
       separatorBuilder: (context, index) => const Divider(height: 0.5),
       itemBuilder: (context, index) {
         if (index == 0 || index == items.length + 1) {

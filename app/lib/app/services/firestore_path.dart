@@ -1,3 +1,5 @@
+import 'package:ootd/app/models/outfit_item.dart';
+
 class FirestorePath {
   // Collections
   static const _users = 'users';
@@ -41,4 +43,9 @@ class FirestorePath {
   // Image refernce outfit paths for storage
   static String outfitImage(String uid, String imagepath) =>
       'images/$uid/$_outfits/$imagepath';
+
+  static String outfitItemImage(String uid, String wardrobeItemImagePath) =>
+      '/images/$uid/wardrobeItems/$wardrobeItemImagePath';
+
+  static String wardrobeItemImages(String uid) => '/images/$uid/wardrobeItems/';
 }

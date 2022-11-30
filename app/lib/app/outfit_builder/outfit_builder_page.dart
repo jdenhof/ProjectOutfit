@@ -21,16 +21,14 @@ class OutfitBuilderPage extends ConsumerStatefulWidget {
 }
 
 class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
-  final List<String> _wardrobeItemId = [];
+  List<String> _wardrobeItemId = [];
 
-  void _wardrobeItemIdChange(String uid) {
-    setState(() {
-      if (_wardrobeItemId.contains(uid)) {
-        _wardrobeItemId.remove(uid);
-      } else {
-        _wardrobeItemId.add(uid);
-      }
-    });
+  void _wardrobeItemIdChange(String imagePath) {
+    if (_wardrobeItemId.contains(imagePath)) {
+      _wardrobeItemId.remove(imagePath);
+    } else {
+      _wardrobeItemId.add(imagePath);
+    }
   }
 
   @override
@@ -116,7 +114,8 @@ class _OutfitBuilderPage extends ConsumerState<OutfitBuilderPage> {
                             height: 100.0,
                             color: Colors.blue,
                             child: FutureBuilder(
-                              future: storage!.getWardrobeItemImage(item),
+                              future:
+                                  storage!.getWardrobeItemImage(item.imagePath),
                               builder: (context, snapshot) {
                                 if (snapshot.hasData) {
                                   return ImageSelector(
@@ -175,7 +174,7 @@ class _ImageSelectorState extends State<ImageSelector> {
     return ElevatedButton(
         onPressed: () {
           setState(() => chosen = !chosen);
-          widget.selectedCallback(widget.item.id);
+          widget.selectedCallback(widget.item.imagePath);
         },
         child: Image(
           color: chosen ? Colors.grey : null,

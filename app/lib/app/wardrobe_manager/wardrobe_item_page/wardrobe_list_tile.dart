@@ -14,7 +14,8 @@ class WardrobeItemListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final storage = ref.watch(storageProvider);
-    Future<Uint8List?> image = storage!.getWardrobeItemImage(wardrobeItem);
+    Future<Uint8List?> image =
+        storage!.getWardrobeItemImage(wardrobeItem.imagePath);
     return ListTile(
       title: Text(wardrobeItem.name),
       leading: FutureBuilder(

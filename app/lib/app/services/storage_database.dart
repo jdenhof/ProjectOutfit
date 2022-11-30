@@ -2,9 +2,11 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ootd/app/models/outfit_item.dart';
 import 'package:ootd/app/models/wardrobe_item.dart';
 import 'package:ootd/app/services/firestore_path.dart';
+import 'package:ootd/app/top_level_providers.dart';
 
 class StorageDatabase {
   StorageDatabase({required this.uid});
@@ -22,11 +24,11 @@ class StorageDatabase {
     }
   }
 
-  Future<Uint8List?> getWardrobeItemImage(WardrobeItem item) async {
+  Future<Uint8List?> getWardrobeItemImage(String imagePath) async {
     try {
       const fourMegabyte = 3 * 1024 * 1024;
       return await storageRef
-          .child(FirestorePath.wardrobeImageRef(uid, item.imagePath))
+          .child(FirestorePath.wardrobeImageRef(uid, imagePath))
           .getData(fourMegabyte);
     } on FirebaseException catch (e) {
       throw FirebaseException(plugin: e.plugin);
@@ -59,6 +61,17 @@ class StorageDatabase {
       const fourMegabyte = 3 * 1024 * 1024;
       return await storageRef
           .child(FirestorePath.outfitImage(uid, item.imagePath))
+          .getData(fourMegabyte);
+    } on FirebaseException catch (e) {
+      throw FirebaseException(plugin: e.plugin);
+    }
+  }
+
+  Future<Uint8List?> getWardrobeItemImagesFromOutfit(WardrobeItem item) async {
+    try {
+      const fourMegabyte = 3 * 1024 * 1024;
+      return await storageRef
+          .child(FirestorePath.wardrobeImage(uid, item.imagePath))
           .getData(fourMegabyte);
     } on FirebaseException catch (e) {
       throw FirebaseException(plugin: e.plugin);
