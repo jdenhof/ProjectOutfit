@@ -1,37 +1,39 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:ootd/src/navigation/factory/outfit_factory.dart';
-import 'package:ootd/src/navigation/factory/wardrobe_factory.dart';
-import 'package:ootd/src/navigation/auth_pages/auth_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:ootd/src/navigation/factory/clothe_factory.dart';
+import 'package:ootd/app/top_level_providers.dart';
+import 'package:ootd/app/auth/auth_widget.dart';
+import 'package:ootd/app/auth/signin_page.dart';
+import 'package:ootd/app/routing/app_router.dart';
+import 'package:ootd/app/home/home_page.dart';
 
-List<CameraDescription> cameras = [];
-
+List<CameraDescription>? cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   cameras = await availableCameras();
-  runApp(const App());
+  runApp(ProviderScope(
+    child: MyApp(),
+  ));
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
-
+// ignore: use_key_in_widget_constructors
+class MyApp extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final firebaseAuth = ref.watch(firebaseAuthProvider);
     return MaterialApp(
-        title: 'Outfit of the Day',
-        theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          fontFamily: 'Kalam',
+      theme: ThemeData(primarySwatch: Colors.indigo),
+      debugShowCheckedModeBanner: false,
+      home: AuthWidget(
+        nonSignedInBuilder: (_) => Consumer(
+          builder: (context, ref, _) => const SignInPage(),
         ),
-        initialRoute: '/',
-        routes: {
-          '/': ((context) => const AuthRouter()),
-          OutfitFactory.routeName: (context) => const OutfitFactory(),
-          WardrobeFactory.routeName: (context) => const WardrobeFactory(),
-          ClotheFactory.routeName: (context) => const ClotheFactory(),
-        });
+        signedInBuilder: (_) => const HomePage(),
+      ),
+      onGenerateRoute: (settings) =>
+          AppRouter.onGenerateRoute(settings, firebaseAuth),
+    );
   }
 }
