@@ -11,20 +11,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:ootd/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('OOTD Test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    await tester.tap(find.text("Add Outfit"));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byIcon(Icons.photo_camera_back), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.camera_front));
+    await tester.pump();
+
+    expect(find.byIcon(Icons.camera_front), findsOneWidget);
   });
 }
