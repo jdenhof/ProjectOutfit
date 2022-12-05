@@ -1,8 +1,5 @@
 name: CI
-on: 
-  pull-request:
-    branches:
-    - main
+on: push
     
 jobs:
   build:
