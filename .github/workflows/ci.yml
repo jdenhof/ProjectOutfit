@@ -11,5 +11,5 @@ jobs:
         channel: 'stable'
         architecture: x64
     - run: cd app && flutter pub get
-    - run: flutter test
-    - run: flutter build ios --release --no-codesign
+    - run: cd app && flutter test
+    - run: cd app && flutter build ios --release --no-codesign
