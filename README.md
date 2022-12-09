@@ -48,7 +48,7 @@ The figure below shows the interactions between the user and various classes wit
     </div>
 </div>
 
-# 4 UI 
+## 4 UI 
 <table border="0">
  <tr>
     <td><b style="font-size:30px">Home</b></td>
@@ -84,7 +84,10 @@ The figure below shows the interactions between the user and various classes wit
  </tr>
 </table>
 
+## 5 Risk Analysis & Retrospective
+### 5.1 Risk Analysis
 
+### 5.2 Retrospective
 
 
 
