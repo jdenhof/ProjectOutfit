@@ -85,9 +85,8 @@ The figure below shows the interactions between the user and various classes wit
 </table>
 
 ## 5 Risk Analysis & Retrospective
-### 5.1 Risk Analysis
-
-### 5.2 Retrospective
+One of the biggest risks we faced with this project was not completing it on time.  We were very ambitious and wanted to pull out all of the stops for this app, including an AI to identify articles of clothing to store in a virtual closet.  Unfortuantely we had to drop this feature for the time being to make sure we completed the essential parts of the project first.  The other problem we ran into was integrating the different API's we needed.  We ran into issues with integrating our authentication serivce in Firebase that delayed our project.  The way around this was utilizing our outside resources to find the solution.  While we did get it to work, it was not ideal to have that delay.  
+While we did in the end finish the project.  We were not able to finish all of our planned features.  Right now, it allows the user to take a picture to add an outift that is stored for the user to look back through.  In order to store the outfits the user must register on the app to create an account so that they can access the database that store their images.  If we could go back knowing what we know now of the challenges integrating API's can cuase, we think we would be able to have managed our time better so we could have implemented rudimentary ML so that users coudl select individual articles of clothing to make a virtual closet.  This then could have been used as the starting point of building the AI for automatically identifying clothing items should we continue working on this project in the future.
 
 
 
