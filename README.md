@@ -64,7 +64,7 @@ The figure below shows the interactions between the user and various classes wit
     <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.JPG"  width="375" height="500">
     </td>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Selection.JPG"  width="375" height="500">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Calendar.JPG"  width="375" height="500">
     </td>
  </tr>
  <tr>
@@ -77,7 +77,7 @@ The figure below shows the interactions between the user and various classes wit
 </tr>
 <tr>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Calendar.JPG"  width="375" height="500">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Selection.JPG"  width="375" height="500">
     </td>
     <td>
     <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Settings.JPG"  width="375" height="500">
