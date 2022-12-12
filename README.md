@@ -61,26 +61,26 @@ The figure below shows the interactions between the user and various classes wit
  </tr>
  <tr>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.png"  width="375" height="500">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/HomeScreen.jpg"  width="375" height="500">
     </td>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Selection.png"  width="375" height="500">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Selection.jpg"  width="375" height="500">
     </td>
  </tr>
  <tr>
     <td><b style="font-size:30px">Calendar of Outfits</b></td>
-    <td><b style="font-size:30px">Settings</b></td>
+    <td><b style="font-size:30px">New Wardrobe Item</b></td>
 </tr>
 <tr>
     <td><b style="font-size:20px">The calendar tab allows for convienty filter based outfit searches based on clothing item tag, date worn, or name.</b></td>
-    <td><b style="font-size:20px"></b>Conviently modify your name and password in the settings menu.</td>
+    <td><b style="font-size:20px"></b>Conveniently name items, and select a category, type, brand, and tag when adding to your wardrobe.</td>
 </tr>
 <tr>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Calendar.png"  width="375" height="500">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Calendar.jpg"  width="375" height="500">
     </td>
     <td>
-    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Settings.png"  width="375" height="500">
+    <img src="https://github.com/jdenhof/ProjectOutfit/blob/main/resources/Settings.jpg"  width="375" height="500">
     </td>
  </tr>
 </table>
