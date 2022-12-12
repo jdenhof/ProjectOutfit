@@ -60,15 +60,16 @@ class _CameraScreenState extends State<CameraScreen>
 
   @override
   void initState() {
-    initCamera();
+    if (cameras != null) {
+      initCamera();
+    }
     super.initState();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    final CameraController cameraController = _controller;
-
-    if (cameraController.value.isInitialized) {
+    if (_controller.value.isInitialized) {
+      final CameraController cameraController = _controller;
       if (state == AppLifecycleState.inactive) {
         cameraController.dispose();
       } else if (state == AppLifecycleState.resumed) {
@@ -79,7 +80,9 @@ class _CameraScreenState extends State<CameraScreen>
 
   @override
   void dispose() {
-    _controller.dispose();
+    if (_controller.value.isInitialized) {
+      _controller.dispose();
+    }
     super.dispose();
   }
 
