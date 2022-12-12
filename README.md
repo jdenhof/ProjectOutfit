@@ -1,4 +1,5 @@
 # ProjectOutfit
+## Demo Video
 [![Watch the video](https://i9.ytimg.com/vi/03TZkJLSKKc/mq2.jpg?sqp=CLzU3pwG-oaymwEmCMACELQB8quKqQMa8AEB-AHOBIACgAqKAgwIABABGCYgLCh_MA8=&rs=AOn4CLD7BuTJGYX27O_siRyXJdWSDRaIUQ)](https://youtu.be/03TZkJLSKKc)
 ## 1 Abstract
 With so many things going on in life, remembering what you wore to every event everyday is combursome and for some unachievable. From fashanista to your average hoodie wearer, nobody wants to be seen in the same outfit repeatidly. Everybody picks up their phone every morning, and some even post there outfits of the day to there favorite social media. Save the headache and keep track of your outfits using OOTD.
