@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ootd/app/capture/camera_page.dart';
 import 'package:ootd/app/constants/strings.dart';
+import 'package:ootd/app/home/components/date_display.dart';
+import 'package:ootd/app/home/components/weather.dart';
 import 'package:ootd/app/routing/app_router.dart';
 import 'package:ootd/app/top_level_providers.dart';
 import 'package:ootd/app/wardrobe_manager/wardrobe_item_page/wardrobe_manager_page.dart';
@@ -43,14 +45,18 @@ class _HomeViewState extends ConsumerState<HomeView> {
   Widget _buildContents(
       FirebaseAuth auth, BuildContext context, WidgetRef ref) {
     // TODO: Start of home content view
-    return Center(
-      child: ElevatedButton(
-        onPressed: () => CameraScreen.show(
-            context,
-            CameraArguments(
-                reciever: AppRoutes.outfitBuilderPage, display: true)),
-        child: const Text("Add Outfit"),
-      ),
+    return Column(
+      children: [
+        const WeatherDisplay(),
+        const DateDisplay(),
+        ElevatedButton(
+          onPressed: () => CameraScreen.show(
+              context,
+              CameraArguments(
+                  reciever: AppRoutes.outfitBuilderPage, display: true)),
+          child: const Text("Add Outfit"),
+        ),
+      ],
     );
   }
 }
